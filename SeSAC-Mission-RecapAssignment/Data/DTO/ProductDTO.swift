@@ -5,9 +5,6 @@
 //  Created by 원태영 on 1/18/24.
 //
 
-import Foundation
-
-// MARK: - Temperatures
 struct ResponseDTO: Codable {
   let total: Int
   let start: Int
@@ -15,11 +12,20 @@ struct ResponseDTO: Codable {
   let items: [ProductDTO]
 }
 
-// MARK: - Item
-struct ProductDTO: Codable {
-  let title: String
-  let image: String
-  let lprice: Int
-  let mallName: String
+struct ProductDTO: Codable, DTO {
   let productID: String
+  let title: String
+  let mallName: String
+  let lprice: Int
+  let image: String
+  
+  var asModel: RAModel {
+    return Product(
+      productID: productID,
+      title: title,
+      mallName: mallName,
+      lprice: lprice,
+      image: image
+    )
+  }
 }
