@@ -21,13 +21,13 @@ final class APIManager {
   private lazy var session = Session(configuration: configuration)
   
   func callRequest<T: Codable>(
-    _ request: APIRequest,
+    _ apiRequest: APIRequest,
     headers: HTTPHeaders,
     method: HTTPMethod,
     completion: @escaping (Result<T, AFError>) -> Void
   ) throws {
     
-    guard let url = components(with: request).url else {
+    guard let url = apiRequest.components.url else {
       throw APIError.convertURLFailed.reThrow(from: #function)
     }
     
@@ -43,14 +43,5 @@ final class APIManager {
             completion(.failure(error))
         }
       }
-  }
-  
-  private func components(with apiRequest: APIRequest) -> URLComponents {
-    return URLComponents().configured {
-      $0.scheme = apiRequest.scheme.rawValue
-      $0.host = apiRequest.host.domain
-      $0.path = apiRequest.endpoint.path
-      $0.queryItems = apiRequest.endpoint.queryItems
-    }
   }
 }
