@@ -19,7 +19,7 @@ struct ProductDTO: Codable, DTO {
   let lprice: Int
   let image: String
   
-  var asModel: RAModel {
+  var asModel: Product {
     return Product(
       productID: productID,
       title: title,

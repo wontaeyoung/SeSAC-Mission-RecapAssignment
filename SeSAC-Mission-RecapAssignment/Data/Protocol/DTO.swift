@@ -6,7 +6,7 @@
 //
 
 protocol DTO {
-  associatedtype Model = RAModel
+  associatedtype Model: RAModel
   
   var asModel: Model { get }
 }
