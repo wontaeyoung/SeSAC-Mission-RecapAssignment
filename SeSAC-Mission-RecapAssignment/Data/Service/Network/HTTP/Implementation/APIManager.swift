@@ -14,8 +14,8 @@ final class APIManager {
   private init() { }
   
   private let configuration: URLSessionConfiguration = .default.configured {
-    $0.timeoutIntervalForRequest = 10
-    $0.timeoutIntervalForResource = 15
+    $0.timeoutIntervalForRequest = Constant.Network.requestTimeLimit
+    $0.timeoutIntervalForResource = Constant.Network.resourceTimeLimit
   }
   
   private lazy var session = Session(configuration: configuration)
@@ -34,6 +34,7 @@ final class APIManager {
     session
       .request(url, method: method, headers: headers)
       .responseDecodable(of: T.self) { response in
+        
         switch response.result {
           case .success(let data):
             completion(.success(data))
@@ -43,7 +44,6 @@ final class APIManager {
         }
       }
   }
-  
   
   private func components(with apiRequest: APIRequest) -> URLComponents {
     return URLComponents().configured {
