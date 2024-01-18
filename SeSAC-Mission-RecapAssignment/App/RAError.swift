@@ -6,6 +6,19 @@
 //
 
 protocol RAError: Error {
-  var logDescrption: String { get }
+  var logDescription: String { get }
   var alertDescription: String { get }
+  func log(from function: String)
+  func reThrow(from function: String) -> Self
+}
+
+extension RAError {
+  func log(from function: String) {
+    print("[에러 발생]", function, logDescription, separator: "\n")
+  }
+  
+  func reThrow(from function: String) -> Self {
+    log(from: function)
+    return self
+  }
 }
