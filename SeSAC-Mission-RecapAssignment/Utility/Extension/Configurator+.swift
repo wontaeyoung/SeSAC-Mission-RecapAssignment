@@ -29,3 +29,5 @@ extension NSObject: Configurator { }
 extension Array: Configurator { }
 extension Dictionary: Configurator { }
 extension Set: Configurator { }
+
+extension URLComponents: Configurator { }
