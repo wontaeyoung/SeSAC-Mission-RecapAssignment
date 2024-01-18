@@ -7,18 +7,43 @@
 
 enum APIError: RAError {
   case convertURLFailed
+  case timedOut // timeoutIntervalForRequest or timeoutIntervalForResource
+  case networkConnectionLost // 요청 시작 후에 사용자 인터넷 연결이 끊어졌을 때
+  case notConnectedToInternet // 사용자가 인터넷에 연결되어있지 않을 때
   
   var logDescription: String {
     switch self {
       case .convertURLFailed:
-        return "URL 변환에 실패했습니다."
+        return "URL 변환 실패"
+        
+      case .timedOut:
+        return "요청 시간 초과"
+        
+      case .networkConnectionLost:
+        return "사용자 네트워크 연결 끊어짐"
+        
+      case .notConnectedToInternet:
+        return "사용자 인터넷 연결 없음"
     }
   }
   
-  var alertDescription: String {
+  var alertDescription: (title: String, message: String) {
     switch self {
       case .convertURLFailed:
-        return "네트워크 요청에 실패했어요. 잠시 후에 다시 시도해주세요!"
+        return (title: "네트워크 요청에 실패했어요.",
+                message: "잠시 후에 다시 시도해주세요!")
+        
+      case .timedOut:
+        return (title: "서버 응답을 받지 못했습니다.", 
+                message: "요청 시간이 초과되었어요.\n네트워크 상태를 확인해주세요.\n문제가 계속 되면 잠시 후 다시 시도해주세요!")
+        
+      case .networkConnectionLost:
+        return (title: "네트워크 연결이 끊어졌어요.",
+                message: "네트워크 상태를 확인하고 다시 시도해주세요!")
+        
+      case .notConnectedToInternet:
+        return (title: "인터넷에 연결되어있지 않습니다.",
+                message: "와이파이를 확인해주세요!")
     }
   }
 }

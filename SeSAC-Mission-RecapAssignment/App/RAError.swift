@@ -7,7 +7,7 @@
 
 protocol RAError: Error {
   var logDescription: String { get }
-  var alertDescription: String { get }
+  var alertDescription: (title: String, message: String) { get }
   func log(from function: String)
   func reThrow(from function: String) -> Self
 }
