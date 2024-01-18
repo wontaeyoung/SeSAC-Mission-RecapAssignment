@@ -56,15 +56,95 @@
 		6E25C1392B59005C00FCC927 /* SeSAC-Mission-RecapAssignment */ = {
 			isa = PBXGroup;
 			children = (
-				6E25C13A2B59005C00FCC927 /* AppDelegate.swift */,
-				6E25C13C2B59005C00FCC927 /* SceneDelegate.swift */,
-				6E25C13E2B59005C00FCC927 /* ViewController.swift */,
-				6E25C1402B59005C00FCC927 /* Main.storyboard */,
+				6E25C14E2B59009D00FCC927 /* App */,
 				6E25C1432B59005D00FCC927 /* Assets.xcassets */,
-				6E25C1452B59005D00FCC927 /* LaunchScreen.storyboard */,
-				6E25C1482B59005D00FCC927 /* Info.plist */,
+				6E25C14F2B59009F00FCC927 /* Config */,
+				6E25C1502B5900A100FCC927 /* Data */,
+				6E25C1512B5900D900FCC927 /* Presenter */,
+				6E25C1572B59036200FCC927 /* Utility */,
 			);
 			path = "SeSAC-Mission-RecapAssignment";
+			sourceTree = "<group>";
+		};
+		6E25C14E2B59009D00FCC927 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				6E25C13A2B59005C00FCC927 /* AppDelegate.swift */,
+				6E25C13C2B59005C00FCC927 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		6E25C14F2B59009F00FCC927 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				6E25C1482B59005D00FCC927 /* Info.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		6E25C1502B5900A100FCC927 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				6E25C1542B59031C00FCC927 /* Model */,
+				6E25C1532B59031800FCC927 /* Protocol */,
+				6E25C1522B5900E500FCC927 /* Service */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		6E25C1512B5900D900FCC927 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				6E25C1452B59005D00FCC927 /* LaunchScreen.storyboard */,
+				6E25C1402B59005C00FCC927 /* Main.storyboard */,
+				6E25C13E2B59005C00FCC927 /* ViewController.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6E25C1522B5900E500FCC927 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				6E25C1562B59034A00FCC927 /* Network */,
+				6E25C1552B59034800FCC927 /* Local */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		6E25C1532B59031800FCC927 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		6E25C1542B59031C00FCC927 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6E25C1552B59034800FCC927 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		6E25C1562B59034A00FCC927 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		6E25C1572B59036200FCC927 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,7 +298,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -275,7 +355,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -294,12 +374,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 75QZ7682T2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "SeSAC-Mission-RecapAssignment/Info.plist";
+				INFOPLIST_FILE = "SeSAC-Mission-RecapAssignment/Config/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -322,12 +403,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 75QZ7682T2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "SeSAC-Mission-RecapAssignment/Info.plist";
+				INFOPLIST_FILE = "SeSAC-Mission-RecapAssignment/Config/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
