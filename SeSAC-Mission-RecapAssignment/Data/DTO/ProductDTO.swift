@@ -12,7 +12,7 @@ struct ResponseDTO: Codable {
   let items: [ProductDTO]
 }
 
-struct ProductDTO: Codable, DTO {
+struct ProductDTO: Codable, RADTO {
   let productID: String
   let title: String
   let mallName: String
