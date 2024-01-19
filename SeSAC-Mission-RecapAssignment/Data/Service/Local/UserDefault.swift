@@ -44,6 +44,7 @@ struct UserDefault<T: Codable> {
 
 extension UserDefault {
   enum Key: String {
+    case onboard
     case nickname
     case profile
     case likes
