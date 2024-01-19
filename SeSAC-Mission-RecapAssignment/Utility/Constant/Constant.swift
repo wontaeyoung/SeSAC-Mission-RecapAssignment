@@ -19,4 +19,12 @@ enum Constant {
                                          .profile6, .profile7, .profile8, .profile9, .profile10,
                                          .profile11, .profile12, .profile13, .profile14]
   }
+  
+  enum Storyboard: String {
+    case Onboarding
+    
+    var name: String {
+      return self.rawValue
+    }
+  }
 }
