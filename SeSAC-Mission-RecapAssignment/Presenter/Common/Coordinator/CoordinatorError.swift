@@ -16,7 +16,7 @@ enum CoordinatorError: RAError {
   }
   
   var alertDescription: (title: String, message: String) {
-    return (title: "오류 발생",
-            message: .combineWithLineBreaks("알 수 없는 오류가 발생했어요.", "잠시 후 다시 시도해주세요."))
+    return (title: "알 수 없는 오류가 발생했어요.",
+            message: "문제가 계속 되면 잠시 후 다시 시도해주세요!")
   }
 }

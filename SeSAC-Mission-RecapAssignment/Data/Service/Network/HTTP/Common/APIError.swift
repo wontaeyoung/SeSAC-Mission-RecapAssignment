@@ -38,7 +38,7 @@ enum APIError: RAError {
         
       case .timedOut:
         return (title: "서버 응답을 받지 못했습니다.", 
-                message: "요청 시간이 초과되었어요.\n네트워크 상태를 확인해주세요.\n문제가 계속 되면 잠시 후 다시 시도해주세요!")
+                message: .combineWithLineBreaks("요청 시간이 초과되었어요.", "네트워크 상태를 확인해주세요.", "문제가 계속 되면 잠시 후 다시 시도해주세요!"))
         
       case .networkConnectionLost:
         return (title: "네트워크 연결이 끊어졌어요.",
