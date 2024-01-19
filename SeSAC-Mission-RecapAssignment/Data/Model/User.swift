@@ -17,11 +17,20 @@ final class User {
   
   private init() { }
   
-  @UserDefault(key: .onboard, defaultValue: false) var onboarded: Bool
-  @UserDefault(key: .nickname, defaultValue: "") var nickname: String
-  @UserDefault(key: .profile, defaultValue: Profile.profile1) var profile: Profile
-  @UserDefault(key: .likes, defaultValue: []) var likes: [String]
-  @UserDefault(key: .recentSearches, defaultValue: []) var recentSearches: [String]
+  @UserDefault(key: .onboard, defaultValue: false)
+  var onboarded: Bool
+  
+  @UserDefault(key: .nickname, defaultValue: "")
+  var nickname: String
+  
+  @UserDefault(key: .profile, defaultValue: Profile.profile1)
+  var profile: Profile
+  
+  @UserDefault(key: .likes, defaultValue: [])
+  var likes: [String]
+  
+  @UserDefault(key: .recentSearches, defaultValue: [])
+  var recentSearches: [String]
 }
 
 enum Profile: String, CaseIterable, Codable {
