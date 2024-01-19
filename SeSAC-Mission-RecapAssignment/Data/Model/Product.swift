@@ -6,6 +6,7 @@
 //
 
 struct Product: RAModel {
+  
   let productID: String
   let title: String
   let mallName: String

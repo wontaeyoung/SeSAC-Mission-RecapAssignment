@@ -13,6 +13,7 @@ import UIKit
 /// 싱글톤은 앱 전역에서 하나의 인스턴스를 두고 데이터 일관성을 유지하는 것이 장점인데, 싱글톤 구조체 인스턴스를 실수로 다른 변수에 할당해서 변경할 때는 값 복사가 일어나서 데이터 일관성이 깨지게 됨
 /// 다른 변수에 싱글톤 인스턴스를 할당하는 것은 제어할 수 없기 때문에, 이러한 부분을 고려하여 클래스로 하는 것이 맞을 것 같음
 final class User {
+  
   static let `default` = User()
   
   private init() { }
@@ -34,6 +35,7 @@ final class User {
 }
 
 enum Profile: String, CaseIterable, Codable {
+  
   case profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9, profile10, profile11, profile12, profile13, profile14
   
   var image: UIImage? {

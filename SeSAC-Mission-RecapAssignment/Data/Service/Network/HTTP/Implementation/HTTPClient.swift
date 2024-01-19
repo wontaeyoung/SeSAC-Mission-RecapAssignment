@@ -9,6 +9,7 @@ import Alamofire
 import Foundation
 
 final class HTTPClient {
+  
   static let shared: HTTPClient = HTTPClient()
   
   private init() { }
@@ -36,6 +37,7 @@ final class HTTPClient {
       .responseDecodable(of: T.self) { response in
         
         switch response.result {
+            
           case .success(let data):
             completion(.success(data))
             

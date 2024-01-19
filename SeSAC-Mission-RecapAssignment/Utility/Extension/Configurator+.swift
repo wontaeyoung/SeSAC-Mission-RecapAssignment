@@ -9,6 +9,7 @@ import UIKit
 protocol Configurator { }
 
 extension Configurator where Self: Any {
+  
   mutating func configure(_ apply: (inout Self) -> Void) {
     apply(&self)
   }
@@ -21,7 +22,8 @@ extension Configurator where Self: Any {
   }
 }
 
-extension Configurator where Self: AnyObject {  
+extension Configurator where Self: AnyObject { 
+  
   func configure(_ apply: (Self) -> Void) {
     apply(self)
   }

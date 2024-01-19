@@ -6,12 +6,14 @@
 //
 
 enum APIError: RAError {
+  
   case convertURLFailed
   case timedOut // timeoutIntervalForRequest or timeoutIntervalForResource
   case networkConnectionLost // 요청 시작 후에 사용자 인터넷 연결이 끊어졌을 때
   case notConnectedToInternet // 사용자가 인터넷에 연결되어있지 않을 때
   
   var logDescription: String {
+    
     switch self {
       case .convertURLFailed:
         return "URL 변환 실패"
@@ -28,6 +30,7 @@ enum APIError: RAError {
   }
   
   var alertDescription: (title: String, message: String) {
+    
     switch self {
       case .convertURLFailed:
         return (title: "네트워크 요청에 실패했어요.",

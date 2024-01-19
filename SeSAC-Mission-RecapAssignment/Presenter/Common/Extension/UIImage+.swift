@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIImage {
+  
   func configured(size: CGFloat? = nil, color: UIColor) -> UIImage {
     var image: UIImage = self
     

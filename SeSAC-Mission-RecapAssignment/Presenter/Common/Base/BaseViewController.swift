@@ -8,11 +8,13 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+  
   @MainActor func setAttribute() { }
   @MainActor func setUI() { }
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     view.backgroundColor = .raBackground
     
     setAttribute()

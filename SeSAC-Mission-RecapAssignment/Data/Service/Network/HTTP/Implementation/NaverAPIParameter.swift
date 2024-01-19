@@ -8,6 +8,7 @@
 import Foundation
 
 enum NaverAPIParameter: String {
+  
   case query
   case display
   case start

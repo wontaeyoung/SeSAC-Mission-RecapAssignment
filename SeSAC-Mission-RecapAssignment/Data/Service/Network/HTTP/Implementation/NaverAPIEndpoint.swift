@@ -8,6 +8,7 @@
 import Foundation
 
 enum NaverAPIEndpoint: Endpoint {
+  
   case shop(query: String, display: Int, start: Int, sort: Sort)
   
   var path: String {
@@ -28,7 +29,9 @@ enum NaverAPIEndpoint: Endpoint {
 }
 
 extension NaverAPIEndpoint {
+  
   enum Sort: String {
+    
     case sim, date, asc, dsc
     
     var name: String { return self.rawValue }

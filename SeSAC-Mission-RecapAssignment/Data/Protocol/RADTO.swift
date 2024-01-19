@@ -6,6 +6,7 @@
 //
 
 protocol RADTO {
+  
   associatedtype Model: RAModel
   
   var asModel: Model { get }

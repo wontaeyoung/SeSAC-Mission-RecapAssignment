@@ -8,6 +8,7 @@
 import UIKit
 
 class BaseCollectionViewCell: UICollectionViewCell {
+  
   class var identifier: String {
     return String(describing: self)
   }
@@ -20,6 +21,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
     
     self.backgroundColor = .clear
     self.contentView.backgroundColor = .clear
+    
     setUI()
   }
 }

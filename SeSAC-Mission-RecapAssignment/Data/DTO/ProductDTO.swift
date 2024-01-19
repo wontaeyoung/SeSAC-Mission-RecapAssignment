@@ -6,6 +6,7 @@
 //
 
 struct ResponseDTO: Codable {
+  
   let total: Int
   let start: Int
   let display: Int
@@ -13,6 +14,7 @@ struct ResponseDTO: Codable {
 }
 
 struct ProductDTO: Codable, RADTO {
+  
   let productID: String
   let title: String
   let mallName: String

@@ -9,6 +9,7 @@ import Foundation
 
 @propertyWrapper
 struct UserDefault<T: Codable> {
+  
   private let key: Key
   private let defaultValue: T
   private let userDefault: UserDefaults
@@ -43,7 +44,9 @@ struct UserDefault<T: Codable> {
 }
 
 extension UserDefault {
+  
   enum Key: String {
+    
     case onboard
     case nickname
     case profile

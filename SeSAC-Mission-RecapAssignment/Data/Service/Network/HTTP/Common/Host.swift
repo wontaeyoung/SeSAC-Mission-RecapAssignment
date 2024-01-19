@@ -6,6 +6,7 @@
 //
 
 enum Host: String {
+  
   case naverOpenAPI = "openapi.naver.com"
   
   var domain: String {

@@ -6,6 +6,7 @@
 //
 
 protocol RAError: Error {
+  
   var logDescription: String { get }
   var alertDescription: (title: String, message: String) { get }
   func log(from function: String)
@@ -13,6 +14,7 @@ protocol RAError: Error {
 }
 
 extension RAError {
+  
   func log(from function: String) {
     print("[에러 발생]", function, logDescription, separator: "\n")
   }

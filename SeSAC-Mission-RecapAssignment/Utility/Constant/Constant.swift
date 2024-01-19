@@ -8,6 +8,7 @@
 import UIKit
 
 enum Constant {
+  
   enum Network {
     static var requestTimeLimit: Double { return 10 }
     static var resourceTimeLimit: Double { return 15 }

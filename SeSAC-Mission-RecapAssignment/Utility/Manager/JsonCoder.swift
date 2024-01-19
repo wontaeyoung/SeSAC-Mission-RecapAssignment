@@ -8,6 +8,7 @@
 import Foundation
 
 enum JsonCoder {
+  
   static let encoder: JSONEncoder = JSONEncoder()
   static let decoder: JSONDecoder = JSONDecoder()
 }

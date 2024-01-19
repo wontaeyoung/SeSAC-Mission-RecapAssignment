@@ -6,7 +6,8 @@
 //
 
 extension Navigatable {
+  
   static var identifier: String {
-   return String(describing: self)
+    return String(describing: self)
   }
 }
