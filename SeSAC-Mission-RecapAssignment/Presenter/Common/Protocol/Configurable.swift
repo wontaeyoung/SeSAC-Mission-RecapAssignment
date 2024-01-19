@@ -17,14 +17,15 @@ protocol TableConfigurable: TableCellRegister {
 }
 
 extension TableConfigurable {
-  func setDelegate(tableView: UITableView) {
+  func setTableViewConfiguration(tableView: UITableView) {
     tableView.delegate = self
     tableView.dataSource = self
+    tableView.backgroundColor = .clear
   }
 }
 
 // MARK: - Collection Configurable
-protocol CollectionCellRegister: UICollectionViewDelegate, UICollectionViewDataSource {
+protocol CollectionCellRegister: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
   func collectionCellRegister<T: BaseCollectionViewCell>(type: T.Type)
 }
 
@@ -33,8 +34,9 @@ protocol CollectionConfigurable: CollectionCellRegister {
 }
 
 extension CollectionConfigurable {
-  func setDelegate(collectionView: UICollectionView) {
+  func setCollectionViewConfiguration(collectionView: UICollectionView) {
     collectionView.delegate = self
     collectionView.dataSource = self
+    collectionView.backgroundColor = .clear
   }
 }
