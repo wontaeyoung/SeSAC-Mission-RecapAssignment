@@ -18,17 +18,23 @@ protocol Coordinator: AnyObject {
   var childCoordinators: [Coordinator] { get set }
   
   // MARK: - Initializer
-  init(_ navigationController: UINavigationController, childCoordinators: [Coordinator])
+  init(_ navigationController: UINavigationController)
   
   // MARK: - Method
   @MainActor func start()
   @MainActor func end()
-  @MainActor func push(_ viewController: BaseViewController)
+  @MainActor func push(_ viewController: BaseViewController, animation: Bool)
   @MainActor func pop()
   @MainActor func dismiss()
   @MainActor func emptyOut()
+  @MainActor func makeViewController(storyboard: Constant.Storyboard, viewController: Navigatable.Type) -> UIViewController
   @MainActor func handle(error: Error)
-  @MainActor func showAlert(title: String, message: String, ok: (title: String, style: UIAlertAction.Style), cancelTitle: String, action: @escaping () -> Void)
+  @MainActor func showAlert(
+    title: String,
+    message: String,
+    okTitle: String?,
+    completion: (() -> Void)?
+  )
 }
 
 extension Coordinator {
@@ -38,12 +44,10 @@ extension Coordinator {
     self.delegate?.coordinatorDidEnd(self)
   }
   
-  @MainActor
-  func push(_ viewController: BaseViewController) {
-    self.navigationController.pushViewController(viewController, animated: true)
+  func push(_ viewController: BaseViewController, animation: Bool = true) {
+    self.navigationController.pushViewController(viewController, animated: animation)
   }
   
-  @MainActor
   func pop() {
     self.navigationController.popViewController(animated: true)
   }
@@ -53,17 +57,21 @@ extension Coordinator {
     self.navigationController.present(viewController, animated: true)
   }
   
-  @MainActor
   func dismiss() {
     self.navigationController.dismiss(animated: true)
   }
   
-  @MainActor
   func emptyOut() {
     self.navigationController.popToRootViewController(animated: true)
   }
   
-  @MainActor func handle(error: Error) {
+  func makeViewController(storyboard: Constant.Storyboard, viewController: Navigatable.Type) -> UIViewController {
+    let storyboard = UIStoryboard(name: storyboard.name, bundle: nil)
+    
+    return storyboard.instantiateViewController(withIdentifier: viewController.identifier)
+  }
+  
+  func handle(error: Error) {
     guard let raError = error as? RAError else {
       self.showErrorAlert(error: CoordinatorError.undefiendError)
       return
@@ -71,23 +79,7 @@ extension Coordinator {
     
     self.showErrorAlert(error: raError)
   }
-}
-
-extension Coordinator {
   
-  @MainActor
-  private func showErrorAlert(error: RAError) {
-    let alertController = UIAlertController(
-      title: error.alertDescription.title,
-      message: error.alertDescription.message,
-      preferredStyle: .alert
-    )
-      .setAction(title: "확인")
-    
-    self.present(alertController)
-  }
-  
-  @MainActor
   func showAlert(
     title: String,
     message: String,
@@ -97,6 +89,20 @@ extension Coordinator {
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
       .setAction(title: okTitle ?? "확인", completion: completion)
       .setCancelAction()
+    
+    self.present(alertController)
+  }
+}
+
+extension Coordinator {
+  
+  private func showErrorAlert(error: RAError) {
+    let alertController = UIAlertController(
+      title: error.alertDescription.title,
+      message: error.alertDescription.message,
+      preferredStyle: .alert
+    )
+      .setAction(title: "확인")
     
     self.present(alertController)
   }
