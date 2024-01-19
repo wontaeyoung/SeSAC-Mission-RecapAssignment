@@ -1,8 +1,8 @@
 //
 //  Navigation.swift
-//  TravelTalk
+//  SeSAC-Mission-RecapAssignment
 //
-//  Created by 원태영 on 1/13/24.
+//  Created by 원태영 on 1/19/24.
 //
 
 import UIKit
