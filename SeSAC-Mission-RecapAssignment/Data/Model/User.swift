@@ -46,8 +46,13 @@ extension User {
       return UIImage(named: self.rawValue)
     }
     
-    static var allImages: [UIImage?] {
-      return allCases.map { $0.image }
+    static var allImages: [UIImage] {
+      return allCases.map { $0.image! }
+    }
+    
+    static var randomProfileImage: UIImage? {
+      User.default.profile = allCases.randomElement()!
+      return User.default.profile.image
     }
   }
 }
