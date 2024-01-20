@@ -12,6 +12,7 @@ enum RADesign {
   enum Font {
     case onboardingTitle
     case primaryButtonTitle
+    case caption
     
     var font: UIFont {
       switch self {
@@ -20,6 +21,9 @@ enum RADesign {
           
         case .primaryButtonTitle:
           return .systemFont(ofSize: 17, weight: .black)
+          
+        case .caption:
+          return .systemFont(ofSize: 13)
       }
     }
   }

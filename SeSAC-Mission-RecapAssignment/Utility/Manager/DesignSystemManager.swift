@@ -11,6 +11,7 @@ final class DesignSystemManager {
   
   // MARK: - Label
   static func configureOnboardingTitleLabel(_ label: UILabel) {
+    
     label.configure {
       $0.font = RADesign.Font.onboardingTitle.font
       $0.textColor = .accent
@@ -19,14 +20,63 @@ final class DesignSystemManager {
     }
   }
   
+  static func configureHintLabel(_ label: UILabel) {
+    
+    label.configure {
+      $0.font = RADesign.Font.caption.font
+      $0.textColor = .red
+      $0.textAlignment = .left
+      $0.numberOfLines = 2
+    }
+  }
+  
   // MARK: - Button
   static func configurePrimaryButton(_ button: UIButton) {
+    
     button.configure {
       $0.setTitleColor(.white, for: .normal)
       $0.titleLabel!.font = RADesign.Font.primaryButtonTitle.font
       $0.backgroundColor = .accent
       $0.clipsToBounds = true
       $0.layer.cornerRadius = 8
+    }
+  }
+  
+  // MARK: - ImageView
+  static func configureProfileImageView(_ imageView: UIImageView) {
+    
+    configureCircleShapeView(imageView)
+    configureSelectedImageView(imageView)
+  }
+  
+  static func configureSelectedImageView(_ imageView: UIImageView) {
+    
+    imageView.configure {
+      $0.layer.borderColor = UIColor.accent.cgColor
+      $0.layer.borderWidth = 2
+    }
+  }
+  
+  // MARK: - UIView
+  static func configureCircleShapeView(_ view: UIView) {
+    
+    view.configure {
+      $0.clipsToBounds = true
+      $0.layer.cornerRadius = view.frame.size.width / 2
+    }
+  }
+  
+  // MARK: - TextField
+  static func configureNicknameFeild(_ textField: UITextField) {
+    
+    textField.configure {
+      let underline = CALayer().configured { layer in
+        layer.backgroundColor = UIColor.raText.cgColor
+        layer.frame = CGRect(x: 0, y: textField.frame.size.height - 1, width: textField.frame.size.width, height: 1)
+      }
+      
+      $0.layer.addSublayer(underline)
+      $0.textColor = .raText
     }
   }
 }
