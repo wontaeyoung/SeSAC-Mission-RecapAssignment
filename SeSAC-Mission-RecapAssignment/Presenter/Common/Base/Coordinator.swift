@@ -8,6 +8,7 @@
 import UIKit
 
 protocol CoordinatorDelegate: AnyObject {
+  
   func coordinatorDidEnd(_ childCoordinator: Coordinator)
 }
 
@@ -27,7 +28,7 @@ protocol Coordinator: AnyObject {
   @MainActor func pop()
   @MainActor func dismiss()
   @MainActor func emptyOut()
-  @MainActor func makeViewController(storyboard: Constant.Storyboard, viewController: Navigatable.Type) -> UIViewController
+  @MainActor func makeViewController(storyboard: Constant.Storyboard, viewController: Navigatable.Type) -> BaseViewController
   @MainActor func handle(error: Error)
   @MainActor func showAlert(
     title: String,
@@ -65,10 +66,10 @@ extension Coordinator {
     self.navigationController.popToRootViewController(animated: true)
   }
   
-  func makeViewController(storyboard: Constant.Storyboard, viewController: Navigatable.Type) -> UIViewController {
+  func makeViewController(storyboard: Constant.Storyboard, viewController: Navigatable.Type) -> BaseViewController {
     let storyboard = UIStoryboard(name: storyboard.name, bundle: nil)
     
-    return storyboard.instantiateViewController(withIdentifier: viewController.identifier)
+    return storyboard.instantiateViewController(withIdentifier: viewController.identifier) as! BaseViewController
   }
   
   func handle(error: Error) {
