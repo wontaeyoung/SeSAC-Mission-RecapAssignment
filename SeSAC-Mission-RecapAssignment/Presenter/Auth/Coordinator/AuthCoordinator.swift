@@ -40,12 +40,12 @@ extension AuthCoordinator {
     self.push(viewController, animation: false)
   }
   
-  func showProfileSettingViewController() {
-    let viewModel = ProfileSettingViewModel(coordinator: self)
+  func showNicknameSettingViewController() {
+    let viewModel = NicknameSettingViewModel(coordinator: self)
     let viewController = makeViewController(
       storyboard: .ProfileSetting,
-      viewController: ProfileSettingViewController.self
-    ) as! ProfileSettingViewController
+      viewController: NicknameSettingViewController.self
+    ) as! NicknameSettingViewController
     
     viewController.setViewModel(viewModel)
     self.push(viewController)

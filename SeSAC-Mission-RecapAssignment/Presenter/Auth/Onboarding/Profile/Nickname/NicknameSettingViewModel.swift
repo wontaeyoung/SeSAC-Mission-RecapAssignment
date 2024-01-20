@@ -1,16 +1,20 @@
 //
-//  ProfileSettingViewModel.swift
+//  NicknameSettingViewModel.swift
 //  SeSAC-Mission-RecapAssignment
 //
 //  Created by 원태영 on 1/20/24.
 //
 
-final class ProfileSettingViewModel: ViewModel {
+final class NicknameSettingViewModel: ViewModel {
   weak var coordinator: AuthCoordinator?
   
   init(coordinator: AuthCoordinator) {
     self.coordinator = coordinator
   }
+}
+
+// MARK: - 닉네임 유효성
+extension NicknameSettingViewModel {
   
   func validateNickname(_ nickname: String) -> NicknameValidation {
     for validation in NicknameValidation.allCases {
@@ -27,9 +31,6 @@ final class ProfileSettingViewModel: ViewModel {
     
     return isMathed
   }
-}
-
-extension ProfileSettingViewModel {
   
   enum NicknameValidation: String, CaseIterable {
     case empty = ""

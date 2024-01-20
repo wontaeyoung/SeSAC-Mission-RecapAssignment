@@ -1,5 +1,5 @@
 //
-//  ProfileSettingViewController.swift
+//  NicknameSettingViewController.swift
 //  SeSAC-Mission-RecapAssignment
 //
 //  Created by 원태영 on 1/20/24.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-final class ProfileSettingViewController: BaseViewController, Navigatable, ViewModelController {
+final class NicknameSettingViewController: BaseViewController, Navigatable, ViewModelController {
   
   @IBOutlet weak var profileImageView: UIImageView!
   @IBOutlet weak var nicknameField: UITextField!
   @IBOutlet weak var hintLabel: UILabel!
   @IBOutlet weak var finishButton: UIButton!
   
-  private var viewModel: ProfileSettingViewModel?
+  private var viewModel: NicknameSettingViewModel?
   private var isFinishButtonEnable: Bool = false {
     didSet {
       toggleFinishButton()
@@ -45,13 +45,13 @@ final class ProfileSettingViewController: BaseViewController, Navigatable, ViewM
     toggleFinishButton()
   }
   
-  func setViewModel(_ viewModel: ProfileSettingViewModel) {
+  func setViewModel(_ viewModel: NicknameSettingViewModel) {
     self.viewModel = viewModel
   }
 }
 
 // MARK: - 닉네임 유효성
-extension ProfileSettingViewController {
+extension NicknameSettingViewController {
   @objc private func textfieldDidChanged(_ sender: UITextField) {
     let validation = viewModel?.validateNickname(sender.text!)
     

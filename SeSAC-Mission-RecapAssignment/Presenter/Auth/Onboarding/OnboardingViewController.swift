@@ -39,6 +39,6 @@ final class OnboardingViewController: BaseViewController, Navigatable, ViewModel
 extension OnboardingViewController {
   
   @objc private func startButtonTapped(_ sender: UIButton) {
-    viewModel?.showProfileViewController()
+    viewModel?.showNicknameSettingViewController()
   }
 }

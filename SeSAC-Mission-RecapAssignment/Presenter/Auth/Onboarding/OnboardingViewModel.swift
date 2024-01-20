@@ -14,7 +14,7 @@ final class OnboardingViewModel: ViewModel {
   }
   
   @MainActor
-  func showProfileViewController() {
-    coordinator?.showProfileSettingViewController()
+  func showNicknameSettingViewController() {
+    coordinator?.showNicknameSettingViewController()
   }
 }

@@ -61,8 +61,8 @@
 		6E25C1EA2B5AC11F00FCC927 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25C1E92B5AC11F00FCC927 /* ViewModel.swift */; };
 		6E25C1EC2B5AD0E800FCC927 /* ViewModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25C1EB2B5AD0E800FCC927 /* ViewModelController.swift */; };
 		6E25C1EF2B5BEE5A00FCC927 /* ProfileSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E25C1EE2B5BEE5A00FCC927 /* ProfileSetting.storyboard */; };
-		6E25C1F12B5BEE7200FCC927 /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25C1F02B5BEE7200FCC927 /* ProfileSettingViewController.swift */; };
-		6E25C1F32B5BEE7A00FCC927 /* ProfileSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25C1F22B5BEE7A00FCC927 /* ProfileSettingViewModel.swift */; };
+		6E25C1F12B5BEE7200FCC927 /* NicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25C1F02B5BEE7200FCC927 /* NicknameSettingViewController.swift */; };
+		6E25C1F32B5BEE7A00FCC927 /* NicknameSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25C1F22B5BEE7A00FCC927 /* NicknameSettingViewModel.swift */; };
 		6E25C1F52B5C053C00FCC927 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25C1F42B5C053C00FCC927 /* UITextField+.swift */; };
 /* End PBXBuildFile section */
 
@@ -121,8 +121,8 @@
 		6E25C1E92B5AC11F00FCC927 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		6E25C1EB2B5AD0E800FCC927 /* ViewModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelController.swift; sourceTree = "<group>"; };
 		6E25C1EE2B5BEE5A00FCC927 /* ProfileSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileSetting.storyboard; sourceTree = "<group>"; };
-		6E25C1F02B5BEE7200FCC927 /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
-		6E25C1F22B5BEE7A00FCC927 /* ProfileSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewModel.swift; sourceTree = "<group>"; };
+		6E25C1F02B5BEE7200FCC927 /* NicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewController.swift; sourceTree = "<group>"; };
+		6E25C1F22B5BEE7A00FCC927 /* NicknameSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewModel.swift; sourceTree = "<group>"; };
 		6E25C1F42B5C053C00FCC927 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -444,11 +444,27 @@
 			isa = PBXGroup;
 			children = (
 				6E25C1EE2B5BEE5A00FCC927 /* ProfileSetting.storyboard */,
-				6E25C1F02B5BEE7200FCC927 /* ProfileSettingViewController.swift */,
-				6E25C1F22B5BEE7A00FCC927 /* ProfileSettingViewModel.swift */,
+				6E25C1F62B5C27DB00FCC927 /* Nickname */,
+				6E25C1F72B5C27DF00FCC927 /* Image */,
 			);
 			name = Profile;
 			path = Onboarding/Profile;
+			sourceTree = "<group>";
+		};
+		6E25C1F62B5C27DB00FCC927 /* Nickname */ = {
+			isa = PBXGroup;
+			children = (
+				6E25C1F02B5BEE7200FCC927 /* NicknameSettingViewController.swift */,
+				6E25C1F22B5BEE7A00FCC927 /* NicknameSettingViewModel.swift */,
+			);
+			path = Nickname;
+			sourceTree = "<group>";
+		};
+		6E25C1F72B5C27DF00FCC927 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -553,10 +569,10 @@
 				6E25C1922B59314600FCC927 /* HTTPClient.swift in Sources */,
 				6E25C1E62B5AC0A500FCC927 /* OnboardingViewModel.swift in Sources */,
 				6E25C1CE2B5A40D300FCC927 /* BaseCollectionViewController.swift in Sources */,
-				6E25C1F32B5BEE7A00FCC927 /* ProfileSettingViewModel.swift in Sources */,
+				6E25C1F32B5BEE7A00FCC927 /* NicknameSettingViewModel.swift in Sources */,
 				6E25C1872B592FC400FCC927 /* APIKey.swift in Sources */,
 				6E25C1BF2B5A2C8200FCC927 /* User.swift in Sources */,
-				6E25C1F12B5BEE7200FCC927 /* ProfileSettingViewController.swift in Sources */,
+				6E25C1F12B5BEE7200FCC927 /* NicknameSettingViewController.swift in Sources */,
 				6E25C1732B59258800FCC927 /* RAError.swift in Sources */,
 				6E25C17F2B592B3200FCC927 /* Navigatable.swift in Sources */,
 				6E25C1E82B5AC0DD00FCC927 /* AuthCoordinator.swift in Sources */,
