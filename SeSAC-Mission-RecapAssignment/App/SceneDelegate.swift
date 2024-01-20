@@ -22,6 +22,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window?.rootViewController = rootNavigationController
     window?.makeKeyAndVisible()
     
+    rootNavigationController.navigationBar.tintColor = .raText
     self.coordinator?.start()
   }
   
