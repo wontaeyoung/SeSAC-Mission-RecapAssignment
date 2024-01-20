@@ -13,8 +13,8 @@ class BaseCollectionViewCell: UICollectionViewCell {
     return String(describing: self)
   }
   
+  @MainActor func configure() { }
   @MainActor func setAttribute() { }
-  @MainActor func setUI() { }
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -22,6 +22,6 @@ class BaseCollectionViewCell: UICollectionViewCell {
     self.backgroundColor = .clear
     self.contentView.backgroundColor = .clear
     
-    setUI()
+    configure()
   }
 }

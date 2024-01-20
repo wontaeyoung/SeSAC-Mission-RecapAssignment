@@ -19,7 +19,7 @@ final class OnboardingViewController: BaseViewController, Navigatable, ViewModel
   /// viewModel 인스턴스를 ViewController 이니셜라이저에서 초기화하지 않아야 하는 이유에 대해 고민이 필요함
   private var viewModel: OnboardingViewModel?
   
-  override func setUI() {
+  override func configure() {
     DesignSystemManager.configureOnboardingTitleLabel(titleLabel)
     DesignSystemManager.configurePrimaryButton(startButton)
   }

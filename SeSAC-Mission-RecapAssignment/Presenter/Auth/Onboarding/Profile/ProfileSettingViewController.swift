@@ -26,7 +26,7 @@ final class ProfileSettingViewController: BaseViewController, Navigatable, ViewM
     
   }
   
-  override func setUI() {
+  override func configure() {
     DesignSystemManager.configureNicknameFeild(nicknameField)
     DesignSystemManager.configureHintLabel(hintLabel)
     DesignSystemManager.configurePrimaryButton(finishButton)
