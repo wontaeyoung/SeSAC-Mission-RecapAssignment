@@ -78,6 +78,8 @@ final class DesignSystemManager {
       $0.layer.addSublayer(underline)
       $0.textColor = .raText
       $0.backgroundColor = .raBackground
+      $0.autocorrectionType = .no
+      $0.autocapitalizationType = .none
       $0.setPlaceholderColor(.systemGray)
     }
   }
