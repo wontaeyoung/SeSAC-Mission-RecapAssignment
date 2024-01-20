@@ -18,6 +18,7 @@ final class ProfileSettingViewController: BaseViewController, Navigatable, ViewM
   
   override func viewDidLayoutSubviews() {
     DesignSystemManager.configureProfileImageView(profileImageView)
+    
   }
   
   override func setUI() {
@@ -28,9 +29,10 @@ final class ProfileSettingViewController: BaseViewController, Navigatable, ViewM
   
   override func setAttribute() {
     navigationItem.title = "프로필 설정"
+    navigationItem.backButtonTitle = ""
+    
     profileImageView.image = User.Profile.randomProfileImage
     nicknameField.placeholder = "닉네임을 입력해주세요 :)"
-    hintLabel.text = "닉네임에 @는 포함할 수 없어요."
     finishButton.setTitle("완료", for: .normal)
   }
   

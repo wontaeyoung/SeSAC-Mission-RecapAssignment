@@ -17,22 +17,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SeSACShopping" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPi-tj-d5K">
-                                <rect key="frame" x="16" y="99" width="361" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPi-tj-d5K">
+                                <rect key="frame" x="16" y="91" width="361" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="9hk-A1-5tg"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="91t-mT-G8r">
-                                <rect key="frame" x="32" y="261.66666666666669" width="329" height="329.00000000000006"/>
+                                <rect key="frame" x="60" y="289.66666666666669" width="273" height="273.00000000000006"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="91t-mT-G8r" secondAttribute="height" id="64v-h1-2xj"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENO-3O-5HS">
-                                <rect key="frame" x="16" y="752" width="361" height="50"/>
+                                <rect key="frame" x="16" y="757" width="361" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="9Ox-C1-HGj"/>
+                                    <constraint firstAttribute="height" constant="45" id="9Ox-C1-HGj"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="시작하기"/>
@@ -41,13 +44,13 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="MPi-tj-d5K" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="40" id="2P4-rR-FIV"/>
+                            <constraint firstItem="MPi-tj-d5K" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="2P4-rR-FIV"/>
                             <constraint firstItem="91t-mT-G8r" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="5xX-V5-7J4"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ENO-3O-5HS" secondAttribute="bottom" constant="16" id="XE3-hL-FjA"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="MPi-tj-d5K" secondAttribute="trailing" constant="16" id="dpU-cP-gFA"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="91t-mT-G8r" secondAttribute="trailing" constant="32" id="hvM-Oh-UCd"/>
-                            <constraint firstItem="91t-mT-G8r" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MPi-tj-d5K" secondAttribute="bottom" constant="40" id="jDO-Tc-pcf"/>
-                            <constraint firstItem="91t-mT-G8r" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="lb9-3p-IhA"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="91t-mT-G8r" secondAttribute="trailing" constant="60" id="hvM-Oh-UCd"/>
+                            <constraint firstItem="91t-mT-G8r" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MPi-tj-d5K" secondAttribute="bottom" priority="750" constant="40" id="jDO-Tc-pcf"/>
+                            <constraint firstItem="91t-mT-G8r" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="60" id="lb9-3p-IhA"/>
                             <constraint firstItem="MPi-tj-d5K" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="maX-S9-rIC"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ENO-3O-5HS" secondAttribute="trailing" constant="16" id="s97-Dp-paU"/>
                             <constraint firstItem="ENO-3O-5HS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="uyB-EO-V6E"/>

@@ -16,7 +16,7 @@ final class DesignSystemManager {
       $0.font = RADesign.Font.onboardingTitle.font
       $0.textColor = .accent
       $0.textAlignment = .center
-      $0.numberOfLines = 2
+      $0.numberOfLines = 3
     }
   }
   
@@ -53,7 +53,7 @@ final class DesignSystemManager {
     
     imageView.configure {
       $0.layer.borderColor = UIColor.accent.cgColor
-      $0.layer.borderWidth = 2
+      $0.layer.borderWidth = 4
     }
   }
   
@@ -77,6 +77,8 @@ final class DesignSystemManager {
       
       $0.layer.addSublayer(underline)
       $0.textColor = .raText
+      $0.backgroundColor = .raBackground
+      $0.setPlaceholderColor(.systemGray)
     }
   }
 }

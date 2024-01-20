@@ -15,6 +15,6 @@ final class OnboardingViewModel: ViewModel {
   
   @MainActor
   func showProfileViewController() {
-    /// ProfileView 구현하고 나서 작성
+    coordinator?.showProfileSettingViewController()
   }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
@@ -14,23 +14,23 @@
             <objects>
                 <viewController storyboardIdentifier="ProfileSettingViewController" id="Y6W-OH-hqX" customClass="ProfileSettingViewController" customModule="SeSAC_Mission_RecapAssignment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="buC-SE-H0K">
-                                <rect key="frame" x="146.66666666666666" y="91" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="52" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="buC-SE-H0K" secondAttribute="height" id="Vfo-MK-eJC"/>
                                     <constraint firstAttribute="width" constant="100" id="qlr-r1-foP"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="닉네임을 입력해주세요 :)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aI4-4g-fWY">
-                                <rect key="frame" x="16" y="223" width="361" height="34"/>
+                                <rect key="frame" x="16" y="184" width="343" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임에 @는 포함할 수 없어요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbV-kz-BUO">
-                                <rect key="frame" x="16" y="265" width="361" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbV-kz-BUO">
+                                <rect key="frame" x="24" y="230" width="327" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Bfi-OR-iCb"/>
                                 </constraints>
@@ -39,9 +39,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7p-fo-ksX">
-                                <rect key="frame" x="16" y="302" width="361" height="50"/>
+                                <rect key="frame" x="16" y="275" width="343" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="mnd-hw-nDe"/>
+                                    <constraint firstAttribute="height" constant="45" id="mnd-hw-nDe"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="완료"/>
@@ -51,14 +51,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="aI4-4g-fWY" firstAttribute="top" secondItem="buC-SE-H0K" secondAttribute="bottom" constant="32" id="23B-tn-o4g"/>
-                            <constraint firstItem="SbV-kz-BUO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="57k-oi-KnS"/>
+                            <constraint firstItem="SbV-kz-BUO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="57k-oi-KnS"/>
                             <constraint firstItem="buC-SE-H0K" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="BQj-tL-7Qh"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="S7p-fo-ksX" secondAttribute="trailing" constant="16" id="GSH-Sk-S1X"/>
-                            <constraint firstItem="S7p-fo-ksX" firstAttribute="top" secondItem="SbV-kz-BUO" secondAttribute="bottom" constant="16" id="VbE-ed-uJg"/>
+                            <constraint firstItem="S7p-fo-ksX" firstAttribute="top" secondItem="SbV-kz-BUO" secondAttribute="bottom" constant="24" id="VbE-ed-uJg"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="aI4-4g-fWY" secondAttribute="trailing" constant="16" id="WhQ-LG-Yxw"/>
                             <constraint firstItem="S7p-fo-ksX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="X7l-e9-VPK"/>
-                            <constraint firstItem="SbV-kz-BUO" firstAttribute="top" secondItem="aI4-4g-fWY" secondAttribute="bottom" constant="8" id="bSv-pg-obx"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="SbV-kz-BUO" secondAttribute="trailing" constant="16" id="g2o-Uc-sgo"/>
+                            <constraint firstItem="SbV-kz-BUO" firstAttribute="top" secondItem="aI4-4g-fWY" secondAttribute="bottom" constant="12" id="bSv-pg-obx"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="SbV-kz-BUO" secondAttribute="trailing" constant="24" id="g2o-Uc-sgo"/>
                             <constraint firstItem="aI4-4g-fWY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="p1g-pK-Ajd"/>
                             <constraint firstItem="buC-SE-H0K" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="pu4-ft-dgS"/>
                         </constraints>

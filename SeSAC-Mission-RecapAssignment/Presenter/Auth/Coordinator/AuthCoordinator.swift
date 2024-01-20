@@ -37,7 +37,17 @@ extension AuthCoordinator {
     ) as! OnboardingViewController
     
     viewController.setViewModel(viewModel)
-    
     self.push(viewController, animation: false)
+  }
+  
+  func showProfileSettingViewController() {
+    let viewModel = ProfileSettingViewModel(coordinator: self)
+    let viewController = makeViewController(
+      storyboard: .ProfileSetting,
+      viewController: ProfileSettingViewController.self
+    ) as! ProfileSettingViewController
+    
+    viewController.setViewModel(viewModel)
+    self.push(viewController)
   }
 }

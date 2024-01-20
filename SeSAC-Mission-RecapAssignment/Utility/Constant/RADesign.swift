@@ -17,7 +17,7 @@ enum RADesign {
     var font: UIFont {
       switch self {
         case .onboardingTitle:
-          return .systemFont(ofSize: 45, weight: .bold)
+          return .systemFont(ofSize: 40, weight: .bold)
           
         case .primaryButtonTitle:
           return .systemFont(ofSize: 17, weight: .black)
