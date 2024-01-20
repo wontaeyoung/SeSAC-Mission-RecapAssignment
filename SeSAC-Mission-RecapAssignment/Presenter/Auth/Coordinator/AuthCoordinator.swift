@@ -23,6 +23,7 @@ final class AuthCoordinator: Coordinator {
   // MARK: - Method
   func start() {
     showOnboardingViewController()
+    print("Show")
   }
 }
 
@@ -30,7 +31,11 @@ extension AuthCoordinator {
   
   private func showOnboardingViewController() {
     let viewModel = OnboardingViewModel(coordinator: self)
-    let viewController = makeViewController(storyboard: .Onboarding, viewController: OnboardingViewController.self)
+    let viewController = makeViewController(
+      storyboard: .Onboarding,
+      viewController: OnboardingViewController.self
+    ) as! OnboardingViewController
+    
     viewController.setViewModel(viewModel)
     
     self.push(viewController, animation: false)

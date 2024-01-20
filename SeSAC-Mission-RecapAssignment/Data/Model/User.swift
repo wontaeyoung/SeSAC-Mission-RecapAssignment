@@ -18,6 +18,8 @@ final class User {
   
   private init() { }
   
+  /// 닉네임 & 프로필 검사로 결정하면 유저가 선택한 프로필인지 defaultValue 때문에 결정된 프로필인지 식별이 불가함
+  /// [처음부터 시작하기]를 트리거로 상태값을 가지고 관리하는게 나을 듯
   @UserDefault(key: .onboard, defaultValue: false)
   var onboarded: Bool
   
@@ -34,15 +36,18 @@ final class User {
   var recentSearches: [String]
 }
 
-enum Profile: String, CaseIterable, Codable {
+extension User {
   
-  case profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9, profile10, profile11, profile12, profile13, profile14
-  
-  var image: UIImage? {
-    return UIImage(named: self.rawValue)
-  }
-  
-  static var allImages: [UIImage?] {
-    return allCases.map { $0.image }
+  enum Profile: String, CaseIterable, Codable {
+    
+    case profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9, profile10, profile11, profile12, profile13, profile14
+    
+    var image: UIImage? {
+      return UIImage(named: self.rawValue)
+    }
+    
+    static var allImages: [UIImage?] {
+      return allCases.map { $0.image }
+    }
   }
 }
