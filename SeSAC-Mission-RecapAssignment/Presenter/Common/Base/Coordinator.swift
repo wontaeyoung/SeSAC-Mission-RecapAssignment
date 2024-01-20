@@ -26,9 +26,9 @@ protocol Coordinator: AnyObject {
   @MainActor func end()
   @MainActor func push(_ viewController: BaseViewController, animation: Bool)
   @MainActor func pop()
+  @MainActor func popToRoot()
   @MainActor func dismiss()
   @MainActor func emptyOut()
-  @MainActor func makeViewController(storyboard: Constant.Storyboard, viewController: Navigatable.Type) -> BaseViewController
   @MainActor func handle(error: Error)
   @MainActor func showAlert(
     title: String,
@@ -38,10 +38,12 @@ protocol Coordinator: AnyObject {
   )
 }
 
+// MARK: - View Navigation
 extension Coordinator {
   
+  @MainActor
   func end() {
-    self.childCoordinators.removeAll()
+    self.emptyOut()
     self.delegate?.coordinatorDidEnd(self)
   }
   
@@ -51,6 +53,10 @@ extension Coordinator {
   
   func pop() {
     self.navigationController.popViewController(animated: true)
+  }
+  
+  func popToRoot() {
+    self.navigationController.popToRootViewController(animated: true)
   }
   
   func present(_ viewController: UIViewController, style: UIModalPresentationStyle = .automatic) {
@@ -63,13 +69,7 @@ extension Coordinator {
   }
   
   func emptyOut() {
-    self.navigationController.popToRootViewController(animated: true)
-  }
-  
-  func makeViewController(storyboard: Constant.Storyboard, viewController: Navigatable.Type) -> BaseViewController {
-    let storyboard = UIStoryboard(name: storyboard.name, bundle: nil)
-    
-    return storyboard.instantiateViewController(withIdentifier: viewController.identifier) as! BaseViewController
+    self.navigationController.viewControllers.removeAll()
   }
   
   func handle(error: Error) {
@@ -93,9 +93,6 @@ extension Coordinator {
     
     self.present(alertController)
   }
-}
-
-extension Coordinator {
   
   private func showErrorAlert(error: RAError) {
     let alertController = UIAlertController(
@@ -106,5 +103,17 @@ extension Coordinator {
       .setAction(title: "확인")
     
     self.present(alertController)
+  }
+}
+
+extension Coordinator {
+  func makeViewController(storyboard: Constant.Storyboard, viewController: Navigatable.Type) -> BaseViewController {
+    let storyboard = UIStoryboard(name: storyboard.name, bundle: nil)
+    
+    return storyboard.instantiateViewController(withIdentifier: viewController.identifier) as! BaseViewController
+  }
+  
+  func addChind(_ childCoordinator: Coordinator) {
+    self.childCoordinators.append(childCoordinator)
   }
 }
