@@ -6,5 +6,7 @@
 //
 
 protocol ViewModel {
-  var coordinator: Coordinator? { get set }
+  associatedtype CoordinatorImpl: Coordinator
+  
+  var coordinator: CoordinatorImpl? { get set }
 }
