@@ -7,4 +7,4 @@
 
 import UIKit
 
-final class MainTabBarController: UITabBarController, Navigatable { }
+final class MainTabBarController: BaseTabBarController, Navigatable { }
