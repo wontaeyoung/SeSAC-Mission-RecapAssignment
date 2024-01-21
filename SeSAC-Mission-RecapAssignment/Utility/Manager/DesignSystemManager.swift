@@ -30,6 +30,31 @@ final class DesignSystemManager {
     }
   }
   
+  static func configureEmptyLabel(_ label: UILabel) {
+    
+    label.configure {
+      $0.font = RADesign.Font.plainBold.font
+      $0.textColor = .raText
+      $0.textAlignment = .center
+    }
+  }
+  
+  static func configureRecentSearchLabel(_ label: UILabel) {
+    
+    label.configure {
+      $0.font = RADesign.Font.plainBold.font
+      $0.textColor = .raText
+    }
+  }
+  
+  static func configureSearchKeywordLabel(_ label: UILabel) {
+    
+    label.configure {
+      $0.font = RADesign.Font.plain.font
+      $0.textColor = .raText
+    }
+  }
+  
   // MARK: - Button
   static func configurePrimaryButton(_ button: UIButton) {
     
@@ -81,6 +106,18 @@ final class DesignSystemManager {
       $0.autocorrectionType = .no
       $0.autocapitalizationType = .none
       $0.setPlaceholderColor(.systemGray)
+    }
+  }
+  
+  // MARK: - SearchBar
+  static func configureSearchBar(_ searchBar: UISearchBar) {
+    
+    searchBar.configure {
+      $0.barTintColor = .clear
+      $0.searchTextField.textColor = .raText
+      $0.searchTextField.backgroundColor = .systemGray
+      $0.autocorrectionType = .no
+      $0.autocapitalizationType = .none
     }
   }
 }
