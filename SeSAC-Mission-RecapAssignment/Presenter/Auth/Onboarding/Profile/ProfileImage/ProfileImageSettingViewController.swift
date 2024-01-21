@@ -15,14 +15,12 @@ final class ProfileImageSettingViewController: BaseCollectionViewController, Nav
   private var viewModel: ProfileImageSettingViewModel?
   
   override func viewDidLayoutSubviews() {
-    
-  }
-  
-  override func configure() {
-
+    DesignSystemManager.configureProfileImageView(currentProfileImageView)
+    DesignSystemManager.configureSelectedImageView(currentProfileImageView)
   }
   
   override func setAttribute() {
+    currentProfileImageView.image = User.default.profile.image
     collectionCellRegister(profileImageCollectionView, cellType: ProfileImageCollectionViewCell.self)
     setCollectionViewConfiguration(profileImageCollectionView)
   }
