@@ -11,7 +11,16 @@ final class ProfileImageCollectionViewCell: BaseCollectionViewCell {
   
   @IBOutlet weak var profileImageView: UIImageView!
   
-  override func setNeedsLayout() {
-    DesignSystemManager.configureProfileImageView(profileImageView)
+  override func configure() {
+    DispatchQueue.main.async {
+      
+      DesignSystemManager.configureProfileImageView(self.profileImageView)
+    }
+  }
+  
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    
+    profileImageView.layer.borderWidth = .zero
   }
 }
