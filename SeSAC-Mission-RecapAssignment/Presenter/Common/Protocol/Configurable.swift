@@ -10,20 +10,33 @@ import UIKit
 // MARK: - Table Configurable
 protocol TableCellRegister: UITableViewDelegate, UITableViewDataSource {
   
-  func tableCellregister<T: BaseTableViewCell>(type: T.Type)
+  func tableCellregister<T: BaseTableViewCell>(
+    _ tableView: UITableView,
+    cellType: T.Type
+  )
 }
 
 protocol TableConfigurable: TableCellRegister { 
   
-  @MainActor func setDelegate(with tableView: UICollectionView)
+  @MainActor func setTableViewConfiguration(_ tableView: UITableView)
 }
 
 extension TableConfigurable {
   
-  func setTableViewConfiguration(tableView: UITableView) {
-    tableView.delegate = self
-    tableView.dataSource = self
-    tableView.backgroundColor = .clear
+  func tableCellRegister<T: BaseTableViewCell>(
+    _ tableView: UITableView,
+    cellType: T.Type
+  ) {
+    let xib = UINib(nibName: T.identifier, bundle: nil)
+    tableView.register(xib, forCellReuseIdentifier: T.identifier)
+  }
+  
+  func setTableViewConfiguration(_ tableView: UITableView) {
+    tableView.configure {
+      $0.delegate = self
+      $0.dataSource = self
+      $0.backgroundColor = .clear
+    }
   }
 }
 
@@ -52,8 +65,11 @@ extension CollectionConfigurable {
   }
   
   func setCollectionViewConfiguration(_ collectionView: UICollectionView) {
-    collectionView.delegate = self
-    collectionView.dataSource = self
-    collectionView.backgroundColor = .clear
+    collectionView.configure {
+      $0.delegate = self
+      $0.dataSource = self
+      $0.prefetchDataSource = self
+      $0.backgroundColor = .clear
+    }
   }
 }
