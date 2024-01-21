@@ -107,10 +107,10 @@ extension Coordinator {
 }
 
 extension Coordinator {
-  func makeViewController(storyboard: Constant.Storyboard, viewController: Navigatable.Type) -> BaseViewController {
+  func makeViewController(storyboard: Constant.Storyboard, viewController: Navigatable.Type) -> UIViewController {
     let storyboard = UIStoryboard(name: storyboard.name, bundle: nil)
     
-    return storyboard.instantiateViewController(withIdentifier: viewController.identifier) as! BaseViewController
+    return storyboard.instantiateViewController(withIdentifier: viewController.identifier)
   }
   
   func addChind(_ childCoordinator: Coordinator) {
