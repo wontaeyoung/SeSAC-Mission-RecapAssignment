@@ -26,5 +26,6 @@ class BaseTableViewCell: UITableViewCell {
     self.contentView.backgroundColor = .clear
     
     configure()
+    setAttribute()
   }
 }
