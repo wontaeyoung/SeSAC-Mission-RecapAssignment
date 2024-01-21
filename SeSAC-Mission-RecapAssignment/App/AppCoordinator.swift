@@ -20,10 +20,8 @@ final class AppCoordinator: Coordinator {
   
   func start() {
     if User.default.onboarded {
-      
       connectMainTabBarFlow()
     } else {
-     
       connectOnboardingFlow()
     }
   }
