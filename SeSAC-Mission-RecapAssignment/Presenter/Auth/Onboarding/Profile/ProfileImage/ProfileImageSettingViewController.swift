@@ -21,8 +21,27 @@ final class ProfileImageSettingViewController: BaseCollectionViewController, Nav
   
   override func setAttribute() {
     currentProfileImageView.image = User.default.profile.image
-    collectionCellRegister(profileImageCollectionView, cellType: ProfileImageCollectionViewCell.self)
+  }
+  
+  override func register() {
+    collectionCellRegister(profileImageCollectionView,
+                           cellType: ProfileImageCollectionViewCell.self)
     setCollectionViewConfiguration(profileImageCollectionView)
+  }
+  
+  override func setLayout() {
+    let cellCount: Int = 4
+    let cellSpacing: CGFloat = 16
+    var cellWidth: CGFloat = (UIScreen.main.bounds.width - (cellSpacing * CGFloat(2 + cellCount - 1))) / CGFloat(cellCount)
+    
+    let layout = UICollectionViewFlowLayout().configured {
+      $0.itemSize = CGSize(width: cellWidth, height: cellWidth)
+      $0.sectionInset = UIEdgeInsets(top: cellSpacing, left: cellSpacing, bottom: cellSpacing, right: cellSpacing)
+      $0.minimumLineSpacing = cellSpacing
+      $0.minimumInteritemSpacing = cellSpacing
+    }
+    
+    profileImageCollectionView.collectionViewLayout = layout
   }
   
   func setViewModel(_ viewModel: ProfileImageSettingViewModel) {
