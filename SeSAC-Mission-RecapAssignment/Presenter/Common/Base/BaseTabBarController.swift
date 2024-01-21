@@ -13,6 +13,7 @@ class BaseTabBarController: UITabBarController {
     super.viewDidLoad()
     
     tabBar.tintColor = .accent
+    tabBar.unselectedItemTintColor = .systemGray
     tabBar.backgroundColor = .raBackground
   }
 }
