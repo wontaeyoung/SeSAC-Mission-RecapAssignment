@@ -20,6 +20,8 @@ final class ProfileImageSettingViewController: BaseCollectionViewController, Nav
   }
   
   override func setAttribute() {
+    navigationItem.title = "프로필 설정"
+    
     currentProfileImageView.image = User.default.profile.image
   }
   
@@ -32,7 +34,7 @@ final class ProfileImageSettingViewController: BaseCollectionViewController, Nav
   override func setLayout() {
     let cellCount: Int = 4
     let cellSpacing: CGFloat = 16
-    var cellWidth: CGFloat = (UIScreen.main.bounds.width - (cellSpacing * CGFloat(2 + cellCount - 1))) / CGFloat(cellCount)
+    let cellWidth: CGFloat = (UIScreen.main.bounds.width - (cellSpacing * CGFloat(2 + cellCount - 1))) / CGFloat(cellCount)
     
     let layout = UICollectionViewFlowLayout().configured {
       $0.itemSize = CGSize(width: cellWidth, height: cellWidth)
