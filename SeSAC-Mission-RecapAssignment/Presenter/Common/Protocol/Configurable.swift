@@ -30,17 +30,28 @@ extension TableConfigurable {
 // MARK: - Collection Configurable
 protocol CollectionCellRegister: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
   
-  func collectionCellRegister<T: BaseCollectionViewCell>(type: T.Type)
+  func collectionCellRegister<T: BaseCollectionViewCell>(
+    _ collectionView: UICollectionView,
+    cellType: T.Type
+  )
 }
 
 protocol CollectionConfigurable: CollectionCellRegister { 
   
-  @MainActor func setDelegate(with collectionView: UICollectionView)
+  @MainActor func setCollectionViewConfiguration(_ collectionView: UICollectionView)
 }
 
 extension CollectionConfigurable {
   
-  func setCollectionViewConfiguration(collectionView: UICollectionView) {
+  func collectionCellRegister<T: BaseCollectionViewCell>(
+    _ collectionView: UICollectionView,
+    cellType: T.Type
+  ) {
+    let xib = UINib(nibName: T.identifier, bundle: nil)
+    collectionView.register(xib, forCellWithReuseIdentifier: T.identifier)
+  }
+  
+  func setCollectionViewConfiguration(_ collectionView: UICollectionView) {
     collectionView.delegate = self
     collectionView.dataSource = self
     collectionView.backgroundColor = .clear
