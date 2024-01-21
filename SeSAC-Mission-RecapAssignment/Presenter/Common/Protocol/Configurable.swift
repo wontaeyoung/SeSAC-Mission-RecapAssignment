@@ -10,7 +10,7 @@ import UIKit
 // MARK: - Table Configurable
 protocol TableCellRegister: UITableViewDelegate, UITableViewDataSource {
   
-  func tableCellregister<T: BaseTableViewCell>(
+  func tableCellRegister<T: BaseTableViewCell>(
     _ tableView: UITableView,
     cellType: T.Type
   )
