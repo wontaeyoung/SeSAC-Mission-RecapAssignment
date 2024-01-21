@@ -51,6 +51,7 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
     nicknameField.addTarget(self, action: #selector(textfieldDidChanged), for: .editingChanged)
     
     finishButton.setTitle("완료", for: .normal)
+    finishButton.addTarget(self, action: #selector(finishButtonTapped), for: .touchUpInside)
     toggleFinishButton()
   }
   
@@ -61,6 +62,19 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
   @objc private func profileImageTapped() {
     viewModel?.showProfileImageSttingViewController()
   }
+  
+  @objc private func finishButtonTapped(_ sender: UIButton) {
+    applyNickname()
+    onboardingCompleted()
+  }
+  
+  private func applyNickname() {
+    User.default.nickname = nicknameField.text!
+  }
+  
+  private func onboardingCompleted() {
+    User.default.onboarded = true
+  }
 }
 
 // MARK: - 닉네임 유효성
@@ -68,9 +82,13 @@ extension NicknameSettingViewController {
   @objc private func textfieldDidChanged(_ sender: UITextField) {
     let validation = viewModel?.validateNickname(sender.text!)
     
+    updateHintText(validation?.hintText)
     changeHintColor(isValid: validation == .satisfied)
     changeFinishButtonEnabled(isValid: validation == .satisfied)
-    hintLabel.text = validation?.hintText
+  }
+  
+  private func updateHintText(_ text: String?) {
+    hintLabel.text = text
   }
   
   private func changeHintColor(isValid: Bool) {
