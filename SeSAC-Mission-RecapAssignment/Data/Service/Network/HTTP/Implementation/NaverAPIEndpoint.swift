@@ -30,10 +30,28 @@ enum NaverAPIEndpoint: Endpoint {
 
 extension NaverAPIEndpoint {
   
-  enum Sort: String {
+  enum Sort: String, CaseIterable{
     
     case sim, date, asc, dsc
     
-    var name: String { return self.rawValue }
+    var name: String {
+      return self.rawValue
+    }
+    
+    var title: String {
+      switch self {
+        case .sim:
+          return "정확도"
+          
+        case .date:
+          return "날짜순"
+          
+        case .asc:
+          return "가격낮은순"
+          
+        case .dsc:
+          return "가격높은순"
+      }
+    }
   }
 }
