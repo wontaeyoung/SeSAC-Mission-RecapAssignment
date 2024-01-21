@@ -45,8 +45,8 @@ final class DesignSystemManager {
   // MARK: - ImageView
   static func configureProfileImageView(_ imageView: UIImageView) {
     
+    imageView.isUserInteractionEnabled = true
     configureCircleShapeView(imageView)
-    configureSelectedImageView(imageView)
   }
   
   static func configureSelectedImageView(_ imageView: UIImageView) {
