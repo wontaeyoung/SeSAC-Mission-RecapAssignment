@@ -51,21 +51,21 @@ extension Coordinator {
     self.navigationController.pushViewController(viewController, animated: animation)
   }
   
-  func pop() {
-    self.navigationController.popViewController(animated: true)
+  func pop(animation: Bool = true) {
+    self.navigationController.popViewController(animated: animation)
   }
   
-  func popToRoot() {
-    self.navigationController.popToRootViewController(animated: true)
+  func popToRoot(animation: Bool = true) {
+    self.navigationController.popToRootViewController(animated: animation)
   }
   
-  func present(_ viewController: UIViewController, style: UIModalPresentationStyle = .automatic) {
+  func present(_ viewController: UIViewController, style: UIModalPresentationStyle = .automatic, animation: Bool = true) {
     viewController.modalPresentationStyle = style
-    self.navigationController.present(viewController, animated: true)
+    self.navigationController.present(viewController, animated: animation)
   }
   
-  func dismiss() {
-    self.navigationController.dismiss(animated: true)
+  func dismiss(animation: Bool = true) {
+    self.navigationController.dismiss(animated: animation)
   }
   
   func emptyOut() {
