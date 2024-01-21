@@ -26,7 +26,7 @@ final class User {
   @UserDefault(key: .nickname, defaultValue: "")
   var nickname: String
   
-  @UserDefault(key: .profile, defaultValue: Profile.profile1)
+  @UserDefault(key: .profile, defaultValue: .allCases.randomElement() ?? .profile1)
   var profile: Profile
   
   @UserDefault(key: .likes, defaultValue: [])

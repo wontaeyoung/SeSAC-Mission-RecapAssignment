@@ -21,6 +21,12 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
     }
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    profileImageView.image = User.default.profile.image
+  }
+  
   override func viewDidLayoutSubviews() {
     DesignSystemManager.configureProfileImageView(profileImageView)
     DesignSystemManager.configureSelectedImageView(profileImageView)
@@ -40,7 +46,6 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
     profileImageView.addGestureRecognizer(
       UITapGestureRecognizer(target: self, action: #selector(profileImageTapped))
     )
-    print(#function, "프로필 이미지 랜덤 설정")
     
     nicknameField.placeholder = "닉네임을 입력해주세요 :)"
     nicknameField.addTarget(self, action: #selector(textfieldDidChanged), for: .editingChanged)

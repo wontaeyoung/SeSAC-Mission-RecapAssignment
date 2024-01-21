@@ -73,5 +73,15 @@ extension ProfileImageSettingViewController: CollectionConfigurable {
     return cell
   }
   
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    updateProfileImage(with: .allCases[indexPath.row])
+  }
+  
+  private func updateProfileImage(with profile: User.Profile) {
+    User.default.profile = profile
+    currentProfileImageView.image = User.default.profile.image
+    profileImageCollectionView.reloadData()
+  }
+  
   func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) { }
 }
