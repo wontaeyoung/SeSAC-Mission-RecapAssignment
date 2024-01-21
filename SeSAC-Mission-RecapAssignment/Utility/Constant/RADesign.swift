@@ -27,4 +27,19 @@ enum RADesign {
       }
     }
   }
+  
+  enum Image {
+    case search
+    case setting
+    
+    var image: UIImage? {
+      switch self {
+        case .search:
+          return UIImage(systemName: "magnifyingglass")
+          
+        case .setting:
+          return UIImage(systemName: "person")
+      }
+    }
+  }
 }
