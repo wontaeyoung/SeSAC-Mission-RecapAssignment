@@ -24,6 +24,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     rootNavigationController.navigationBar.tintColor = .raText
     rootNavigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.raText]
+    
     self.coordinator?.start()
   }
   
