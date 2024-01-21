@@ -34,4 +34,8 @@ enum MainTabBarPage: Int, CaseIterable {
         return RADesign.Image.setting.image
     }
   }
+  
+  var tabBarItem: UITabBarItem {
+    return UITabBarItem(title: title, image: icon, tag: index)
+  }
 }

@@ -25,9 +25,9 @@ protocol Coordinator: AnyObject {
   @MainActor func start()
   @MainActor func end()
   @MainActor func push(_ viewController: BaseViewController, animation: Bool)
-  @MainActor func pop()
-  @MainActor func popToRoot()
-  @MainActor func dismiss()
+  @MainActor func pop(animation: Bool)
+  @MainActor func popToRoot(animation: Bool)
+  @MainActor func dismiss(animation: Bool)
   @MainActor func emptyOut()
   @MainActor func handle(error: Error)
   @MainActor func showAlert(
