@@ -17,7 +17,8 @@ enum Constant {
   enum Storyboard: String {
     case Onboarding
     case ProfileSetting
-    case Main
+    case Search
+    case Setting
     
     var name: String {
       return self.rawValue

@@ -22,6 +22,28 @@ final class SearchCoordinator: Coordinator {
   
   // MARK: - Method
   func start() {
+    configureNavigationBar()
+    showSearchViewController()
+  }
+  
+  private func configureNavigationBar() {
+    navigationController.navigationBar.configure {
+      $0.tintColor = .raText
+      $0.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.raText]
+    }
+  }
+}
+
+extension SearchCoordinator {
+  
+  func showSearchViewController() {
+    let viewModel = SearchViewModel(coordinator: self)
+    let viewController = makeViewController(
+      storyboard: .Search,
+      viewController: SearchViewController.self
+    ) as! SearchViewController
     
+    viewController.setViewModel(viewModel)
+    self.push(viewController, animation: false)
   }
 }
