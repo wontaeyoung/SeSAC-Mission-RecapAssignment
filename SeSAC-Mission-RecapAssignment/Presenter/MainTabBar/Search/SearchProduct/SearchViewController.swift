@@ -41,11 +41,14 @@ final class SearchViewController: BaseTableViewController, Navigatable, ViewMode
       "4",
       "5",
     ]
+    
+    print(User.default.recentSearches)
   }
   
   override func setAttribute() {
     navigationItem.title = User.default.nickname + "님의 새싹쇼핑"
     searchBar.placeholder = "브랜드, 상품, 프로필, 태그 등"
+    searchBar.delegate = self
     emptyImageView.image = .empty
     emptyLabel.text = "최근 검색어가 없어요"
     recentSearchLabel.text = "최근 검색"
@@ -88,6 +91,7 @@ extension SearchViewController: TableConfigurable {
     let row: Int = indexPath.row
     let keyword: String = recentSearches[row]
     
+    cell.selectionStyle = .none
     cell.setData(text: keyword, tag: row) { [weak self] in
       guard let self else { return }
       
@@ -100,5 +104,21 @@ extension SearchViewController: TableConfigurable {
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 60
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    searchNewKeyword(recentSearches[indexPath.row])
+  }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    searchNewKeyword(searchBar.text!)
+  }
+  
+  private func searchNewKeyword(_ keyword: String) {
+    User.default.addNewSearchKeyword(keyword)
+    viewModel?.showSearchResultViewController(keyword: keyword)
+    bindRecentSearches()
   }
 }

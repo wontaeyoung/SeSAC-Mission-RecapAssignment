@@ -115,7 +115,6 @@ final class DesignSystemManager {
     searchBar.configure {
       $0.barTintColor = .clear
       $0.searchTextField.textColor = .raText
-      $0.searchTextField.backgroundColor = .systemGray
       $0.autocorrectionType = .no
       $0.autocapitalizationType = .none
     }

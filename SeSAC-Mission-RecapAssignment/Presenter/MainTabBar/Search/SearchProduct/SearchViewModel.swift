@@ -11,4 +11,8 @@ final class SearchViewModel: ViewModel {
   init(coordinator: SearchCoordinator) {
     self.coordinator = coordinator
   }
+  
+  func showSearchResultViewController(keyword: String) {
+    coordinator?.showSearchResultViewController(keyword: keyword)
+  }
 }

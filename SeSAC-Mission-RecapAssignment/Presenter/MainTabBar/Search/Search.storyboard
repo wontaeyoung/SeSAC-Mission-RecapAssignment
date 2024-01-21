@@ -93,6 +93,21 @@
             </objects>
             <point key="canvasLocation" x="44" y="-28.335832083958024"/>
         </scene>
+        <!--Search Result View Controller-->
+        <scene sceneID="4uu-jN-phx">
+            <objects>
+                <viewController storyboardIdentifier="SearchResultViewController" id="mDt-hf-wB6" customClass="SearchResultViewController" customModule="SeSAC_Mission_RecapAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Se1-wj-BCV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="RXk-EV-bcI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TGz-tn-OcD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="886" y="-15"/>
+        </scene>
     </scenes>
     <resources>
         <image name="empty" width="320" height="236"/>

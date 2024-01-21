@@ -32,4 +32,12 @@ final class User {
   
   @UserDefault(key: .recentSearches, defaultValue: [])
   var recentSearches: [String]
+  
+  func addNewSearchKeyword(_ keyword: String) {
+    if let index = recentSearches.firstIndex(of: keyword) {
+      recentSearches.remove(at: index)
+    }
+    
+    recentSearches.insert(keyword, at: 0)
+  }
 }
