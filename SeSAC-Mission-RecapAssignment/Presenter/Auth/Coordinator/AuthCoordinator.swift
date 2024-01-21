@@ -23,7 +23,6 @@ final class AuthCoordinator: Coordinator {
   // MARK: - Method
   func start() {
     showOnboardingViewController()
-    print("Show")
   }
 }
 
@@ -46,6 +45,17 @@ extension AuthCoordinator {
       storyboard: .ProfileSetting,
       viewController: NicknameSettingViewController.self
     ) as! NicknameSettingViewController
+    
+    viewController.setViewModel(viewModel)
+    self.push(viewController)
+  }
+  
+  func showProfileImageSttingViewController() {
+    let viewModel = ProfileImageSettingViewModel(coordinator: self)
+    let viewController = makeViewController(
+      storyboard: .ProfileSetting,
+      viewController: ProfileImageSettingViewController.self
+    ) as! ProfileImageSettingViewController
     
     viewController.setViewModel(viewModel)
     self.push(viewController)

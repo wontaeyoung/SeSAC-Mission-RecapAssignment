@@ -11,6 +11,10 @@ final class NicknameSettingViewModel: ViewModel {
   init(coordinator: AuthCoordinator) {
     self.coordinator = coordinator
   }
+  
+  func showProfileImageSttingViewController() {
+    coordinator?.showProfileImageSttingViewController()
+  }
 }
 
 // MARK: - 닉네임 유효성

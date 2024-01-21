@@ -23,7 +23,7 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
   
   override func viewDidLayoutSubviews() {
     DesignSystemManager.configureProfileImageView(profileImageView)
-    
+    DesignSystemManager.configureSelectedImageView(profileImageView)
   }
   
   override func configure() {
@@ -37,6 +37,10 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
     navigationItem.backButtonTitle = ""
     
     profileImageView.image = User.Profile.randomProfileImage
+    profileImageView.addGestureRecognizer(
+      UITapGestureRecognizer(target: self, action: #selector(profileImageTapped))
+    )
+    print(#function, "프로필 이미지 랜덤 설정")
     
     nicknameField.placeholder = "닉네임을 입력해주세요 :)"
     nicknameField.addTarget(self, action: #selector(textfieldDidChanged), for: .editingChanged)
@@ -47,6 +51,10 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
   
   func setViewModel(_ viewModel: NicknameSettingViewModel) {
     self.viewModel = viewModel
+  }
+  
+  @objc private func profileImageTapped() {
+    viewModel?.showProfileImageSttingViewController()
   }
 }
 
