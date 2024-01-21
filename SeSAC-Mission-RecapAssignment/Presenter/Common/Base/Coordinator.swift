@@ -24,7 +24,7 @@ protocol Coordinator: AnyObject {
   // MARK: - Method
   @MainActor func start()
   @MainActor func end()
-  @MainActor func push(_ viewController: BaseViewController, animation: Bool)
+  @MainActor func push(_ viewController: UIViewController, animation: Bool)
   @MainActor func pop(animation: Bool)
   @MainActor func popToRoot(animation: Bool)
   @MainActor func dismiss(animation: Bool)
@@ -47,7 +47,7 @@ extension Coordinator {
     self.delegate?.coordinatorDidEnd(self)
   }
   
-  func push(_ viewController: BaseViewController, animation: Bool = true) {
+  func push(_ viewController: UIViewController, animation: Bool = true) {
     self.navigationController.pushViewController(viewController, animated: animation)
   }
   

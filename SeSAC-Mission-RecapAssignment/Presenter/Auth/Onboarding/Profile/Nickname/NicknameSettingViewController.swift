@@ -74,6 +74,8 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
   
   private func onboardingCompleted() {
     User.default.onboarded = true
+    
+    viewModel?.connectMainTabBarFlow()
   }
 }
 

@@ -12,7 +12,6 @@ class BaseTabBarController: UITabBarController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    view.backgroundColor = .raBackground
     tabBar.tintColor = .accent
     tabBar.backgroundColor = .raBackground
   }

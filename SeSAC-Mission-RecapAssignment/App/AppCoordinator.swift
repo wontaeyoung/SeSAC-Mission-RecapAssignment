@@ -40,14 +40,26 @@ extension AppCoordinator {
     self.addChind(authCoordinator)
   }
   
+  @MainActor
   private func connectMainTabBarFlow() {
-    /// TabBarCoordinator 구현 후 작성
+    self.popToRoot()
+    let mainTabBarCoordinator = MainTabBarCoordinator(self.navigationController)
+    mainTabBarCoordinator.delegate = self
+    mainTabBarCoordinator.start()
+    self.addChind(mainTabBarCoordinator)
   }
 }
 
 extension AppCoordinator: CoordinatorDelegate {
   
+  @MainActor
   func coordinatorDidEnd(_ childCoordinator: Coordinator) {
-    print(#function, "navigation stack", self.navigationController.viewControllers.count)
+    print("App 코디네이터 : 온보딩 \(User.default.onboarded)")
+    
+    if User.default.onboarded {
+      connectMainTabBarFlow()
+    } else {
+      connectOnboardingFlow()
+    }
   }
 }

@@ -15,6 +15,11 @@ final class NicknameSettingViewModel: ViewModel {
   func showProfileImageSttingViewController() {
     coordinator?.showProfileImageSttingViewController()
   }
+  
+  @MainActor
+  func connectMainTabBarFlow() {
+    coordinator?.end()
+  }
 }
 
 // MARK: - 닉네임 유효성

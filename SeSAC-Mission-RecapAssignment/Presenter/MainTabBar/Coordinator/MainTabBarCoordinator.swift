@@ -12,15 +12,13 @@ final class MainTabBarCoordinator: Coordinator {
   // MARK: - Property
   weak var delegate: CoordinatorDelegate?
   var navigationController: UINavigationController
-  lazy var tabBarController: UITabBarController = makeViewController(
-    storyboard: .Main,
-    viewController: MainTabBarController.self
-  ) as! MainTabBarController
+  var tabBarController: UITabBarController
   var childCoordinators: [Coordinator]
   
   // MARK: - Intializer
   init(_ navigationController: UINavigationController) {
     self.navigationController = navigationController
+    self.tabBarController = MainTabBarController()
     self.childCoordinators = []
   }
   
@@ -30,14 +28,27 @@ final class MainTabBarCoordinator: Coordinator {
     /// 개별 Coordinator를 생성해서 탭 페이지마다의 네비게이션 플로우 적용
     /// 탭바 뷰컨트롤러 목록에 추가
     let rootNavigationControllers = MainTabBarPage.allCases.map { page in
-      
-      return UINavigationController().configured {
-        $0.tabBarItem = page.tabBarItem
-        connectTabFlow(page: page, controller: $0)
-      }
+      makeNavigationController(with: page)
     }
     
-    tabBarController.viewControllers = rootNavigationControllers
+    configureTabBarController(with: rootNavigationControllers)
+    self.navigationController.setNavigationBarHidden(true, animated: false)
+    self.push(tabBarController)
+  }
+  
+  private func configureTabBarController(with controllers: [UINavigationController]) {
+    tabBarController.configure {
+      $0.setViewControllers(controllers, animated: true)
+      $0.selectedIndex = MainTabBarPage.search.index
+    }
+  }
+  
+  @MainActor
+  private func makeNavigationController(with page: MainTabBarPage) -> UINavigationController {
+    return UINavigationController().configured {
+      $0.tabBarItem = page.tabBarItem
+      connectTabFlow(page: page, controller: $0)
+    }
   }
   
   @MainActor
