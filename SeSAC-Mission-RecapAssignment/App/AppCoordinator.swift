@@ -19,6 +19,8 @@ final class AppCoordinator: Coordinator {
   }
   
   func start() {
+    self.navigationController.navigationBar.barTintColor = .raBackground
+    
     if User.default.onboarded {
       connectMainTabBarFlow()
     } else {
@@ -52,8 +54,6 @@ extension AppCoordinator: CoordinatorDelegate {
   
   @MainActor
   func coordinatorDidEnd(_ childCoordinator: Coordinator) {
-    print("App 코디네이터 : 온보딩 \(User.default.onboarded)")
-    
     if User.default.onboarded {
       connectMainTabBarFlow()
     } else {

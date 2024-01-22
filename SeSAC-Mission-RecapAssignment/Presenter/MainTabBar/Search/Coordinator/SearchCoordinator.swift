@@ -29,6 +29,7 @@ final class SearchCoordinator: Coordinator {
   private func configureNavigationBar() {
     navigationController.navigationBar.configure {
       $0.tintColor = .raText
+      $0.barTintColor = .raBackground
       $0.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.raText]
     }
   }

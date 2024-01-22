@@ -41,6 +41,8 @@ final class MainTabBarCoordinator: Coordinator {
       $0.setViewControllers(controllers, animated: true)
       $0.selectedIndex = MainTabBarPage.search.index
     }
+    
+    tabBarController.tabBar.barTintColor = .raBackground
   }
   
   @MainActor

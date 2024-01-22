@@ -151,6 +151,7 @@ final class DesignSystemManager {
     imageView.configure {
       $0.clipsToBounds = true
       $0.layer.cornerRadius = 15
+      $0.contentMode = .scaleAspectFill
     }
   }
   
@@ -186,10 +187,10 @@ final class DesignSystemManager {
     
     searchBar.configure {
       $0.barTintColor = .clear
+      $0.tintColor = .accent
       $0.searchTextField.textColor = .raText
       $0.autocorrectionType = .no
       $0.autocapitalizationType = .none
-      $0.searchTextField.setPlaceholderColor(.systemGray)
     }
   }
 }

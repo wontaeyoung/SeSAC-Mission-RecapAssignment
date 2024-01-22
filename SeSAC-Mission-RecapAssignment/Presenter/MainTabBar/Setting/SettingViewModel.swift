@@ -11,4 +11,8 @@ final class SettingViewModel: ViewModel {
   init(coordinator: SettingCoordinator) {
     self.coordinator = coordinator
   }
+  
+  func showSettingViewController() {
+    coordinator?.showSettingViewController()
+  }
 }

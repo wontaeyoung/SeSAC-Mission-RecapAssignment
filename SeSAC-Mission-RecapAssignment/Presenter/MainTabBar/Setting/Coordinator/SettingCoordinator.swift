@@ -22,7 +22,28 @@ final class SettingCoordinator: Coordinator {
   
   // MARK: - Method
   func start() {
-    
+    configureNavigationBar()
+    showSettingViewController()
+  }
+  
+  private func configureNavigationBar() {
+    navigationController.navigationBar.configure {
+      $0.tintColor = .raText
+      $0.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.raText]
+    }
   }
 }
 
+extension SettingCoordinator {
+  
+  func showSettingViewController() {
+    let viewModel = SettingViewModel(coordinator: self)
+    let viewController = makeViewController(
+      storyboard: .Setting,
+      viewController: SettingViewController.self
+    ) as! SettingViewController
+    
+    viewController.setViewModel(viewModel)
+    self.push(viewController, animation: false)
+  }
+}

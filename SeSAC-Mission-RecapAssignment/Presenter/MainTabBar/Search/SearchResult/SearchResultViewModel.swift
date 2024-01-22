@@ -25,9 +25,14 @@ extension SearchResultViewModel {
   struct APIContainer {
     let display: Int = 30
     var page: Int = 0
+    var total: Int = 30
     
     var start: Int {
       return display * (page - 1) + 1
+    }
+    
+    var isEnd: Bool {
+      return start > self.total
     }
     
     mutating func increasePage() {
@@ -67,6 +72,8 @@ extension SearchResultViewModel {
         switch result {
           case .success(let success):
             let products: [Product] = success.items.map { $0.asModel }
+            
+            self.apiContainer.total = success.total
             completion((count: success.total, items: products))
             
           case .failure(let failure):

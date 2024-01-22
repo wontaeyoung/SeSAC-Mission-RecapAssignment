@@ -26,6 +26,7 @@ final class SearchResultViewController: BaseCollectionViewController, Navigatabl
     didSet {
       configure()
       viewModel?.apiContainer.resetPage()
+      self.products.removeAll()
       callRequest()
     }
   }
@@ -101,7 +102,7 @@ final class SearchResultViewController: BaseCollectionViewController, Navigatabl
         guard let self else { return }
         
         resultCountLabel.text = "\(count.formatted) 개의 검색 결과"
-        self.products = products
+        self.products.append(contentsOf: products)
       }
     }
   }
@@ -133,5 +134,16 @@ extension SearchResultViewController: CollectionConfigurable {
     viewModel?.showProductDetailViewController(product: product)
   }
   
-  func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) { }
+  func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) { 
+    guard let viewModel, !viewModel.apiContainer.isEnd else { return }
+    
+    print("Prefetch \(indexPaths)")
+    
+    indexPaths
+      .forEach { path in
+        if path.row + 1 == products.count {
+          callRequest()
+        }
+      }
+  }
 }
