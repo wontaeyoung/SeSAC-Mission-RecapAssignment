@@ -31,7 +31,7 @@ struct ProductDTO: Codable, RADTO {
       productID: productID,
       title: title,
       mallName: mallName,
-      lprice: lprice,
+      lprice: Int(lprice) ?? 0,
       image: image
     )
   }
