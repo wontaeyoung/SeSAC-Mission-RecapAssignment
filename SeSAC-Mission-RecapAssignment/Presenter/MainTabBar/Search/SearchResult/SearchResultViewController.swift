@@ -24,6 +24,7 @@ final class SearchResultViewController: BaseCollectionViewController, Navigatabl
   
   private var currentSortType: NaverAPIEndpoint.Sort = .sim {
     didSet {
+      guard oldValue != currentSortType else { return }
       configure()
       viewModel?.apiContainer.resetPage()
       self.products.removeAll()

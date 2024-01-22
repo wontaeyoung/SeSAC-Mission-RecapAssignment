@@ -47,6 +47,9 @@ extension SearchResultViewModel {
   func callRequest(query: String, sort: NaverAPIEndpoint.Sort, completion: @escaping ((count: Int, items: [Product])) -> Void) {
     apiContainer.increasePage()
     
+    /// total을 초과하는 start에서 API Call을 시도하면 response total 값이 0으로 반환되어서, 결과뷰의 total count 라벨도 0으로 변하는 문제를 해결하기 위함
+    guard !apiContainer.isEnd else { return }
+    
     let endPoint = NaverAPIEndpoint.shop(
       query: query,
       display: apiContainer.display,
