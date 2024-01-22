@@ -31,7 +31,7 @@ final class ProductCollectionViewCell: BaseCollectionViewCell {
     
     productImageView.kf.setImage(with: product.url)
     mallNameLabel.text = product.mallName
-    titleLabel.text = product.title
+    titleLabel.text = product.title.asMarkdownRedneredAttributeString?.string
     priceLabel.text = product.lprice.formatted
     likeButton.setImage(likeImage, for: .normal)
     likeButton.tag = tag

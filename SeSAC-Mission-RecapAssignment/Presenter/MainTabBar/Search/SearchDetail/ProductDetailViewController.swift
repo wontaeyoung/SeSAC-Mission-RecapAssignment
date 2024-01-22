@@ -38,7 +38,7 @@ final class ProductDetailViewController: BaseViewController, Navigatable {
   override func setAttribute() {
     guard let product else { return }
     
-    navigationItem.title = product.title
+    navigationItem.title = product.title.asMarkdownRedneredAttributeString?.string
     productWebView.load(urlRequest)
   }
   

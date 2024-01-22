@@ -111,40 +111,36 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZH-DI-FZF">
-                                <rect key="frame" x="8" y="57" width="75" height="35"/>
+                                <rect key="frame" x="8" y="57" width="46" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="6IC-cA-FTI"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMR-Li-Wed">
-                                <rect key="frame" x="91" y="57" width="75" height="35"/>
+                                <rect key="frame" x="62" y="57" width="46" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="tmN-f0-wFf"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWd-QA-D07">
-                                <rect key="frame" x="174" y="57" width="75" height="35"/>
+                                <rect key="frame" x="116" y="57" width="46" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="zIS-AD-BIe"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXQ-mH-JFB">
-                                <rect key="frame" x="257" y="57" width="75" height="35"/>
+                                <rect key="frame" x="170" y="57" width="46" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Xi2-uM-gVl"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mBx-YK-WU7">
                                 <rect key="frame" x="0.0" y="100" width="375" height="567"/>

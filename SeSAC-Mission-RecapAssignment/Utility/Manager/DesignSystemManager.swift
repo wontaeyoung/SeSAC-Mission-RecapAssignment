@@ -124,7 +124,7 @@ final class DesignSystemManager {
       $0.clipsToBounds = true
       $0.layer.borderColor = UIColor.raText.cgColor
       $0.layer.borderWidth = 1
-      $0.layer.cornerRadius = 5
+      $0.layer.cornerRadius = 8
       
       configureSelectedSortButton(button, isSelected: isSelected)
     }
@@ -136,6 +136,7 @@ final class DesignSystemManager {
       /// 한번 선택되었다가 디셀렉트 된 글자색 왜 안바뀌는지 확인해야됨
       $0.setTitleColor(isSelected ? .raBackground : .raText, for: .normal)
       $0.backgroundColor = isSelected ? .raText : .clear
+      $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
     }
   }
   
