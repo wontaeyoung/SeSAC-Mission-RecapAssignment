@@ -7,6 +7,8 @@
 
 import UIKit
 
+/// 이미지 리사이징 계산할 때 터짐
+
 final class DesignSystemManager {
   
   // MARK: - Label
@@ -115,6 +117,7 @@ final class DesignSystemManager {
   static func configureSelectedSortButton(_ button: UIButton, isSelected: Bool) {
     
     button.configure {
+      /// 한번 선택되었다가 디셀렉트 된 글자색 왜 안바뀌는지 확인해야됨
       $0.setTitleColor(isSelected ? .raBackground : .raText, for: .normal)
       $0.backgroundColor = isSelected ? .raText : .clear
     }

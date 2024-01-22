@@ -101,8 +101,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13, 235, 449 개의 검색 결과" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYf-QZ-dv9">
-                                <rect key="frame" x="8" y="28" width="198" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYf-QZ-dv9">
+                                <rect key="frame" x="8" y="28" width="0.0" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="X6M-Pq-ed1"/>
                                 </constraints>
@@ -111,36 +111,40 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZH-DI-FZF">
-                                <rect key="frame" x="8" y="57" width="46" height="35"/>
+                                <rect key="frame" x="8" y="57" width="75" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="6IC-cA-FTI"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMR-Li-Wed">
-                                <rect key="frame" x="62" y="57" width="46" height="35"/>
+                                <rect key="frame" x="91" y="57" width="75" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="tmN-f0-wFf"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWd-QA-D07">
-                                <rect key="frame" x="116" y="57" width="46" height="35"/>
+                                <rect key="frame" x="174" y="57" width="75" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="zIS-AD-BIe"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXQ-mH-JFB">
-                                <rect key="frame" x="170" y="57" width="46" height="35"/>
+                                <rect key="frame" x="257" y="57" width="75" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Xi2-uM-gVl"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mBx-YK-WU7">
                                 <rect key="frame" x="0.0" y="100" width="375" height="567"/>
@@ -185,6 +189,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGz-tn-OcD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="885.60000000000002" y="-15.742128935532236"/>
+        </scene>
+        <!--Product Detail View Controller-->
+        <scene sceneID="gv7-up-KlB">
+            <objects>
+                <viewController storyboardIdentifier="ProductDetailViewController" id="esJ-mc-KEh" customClass="ProductDetailViewController" customModule="SeSAC_Mission_RecapAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iGF-rt-kDO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68o-hH-Ykt">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="c4V-IQ-dqb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="68o-hH-Ykt" firstAttribute="leading" secondItem="c4V-IQ-dqb" secondAttribute="leading" id="4Kd-zj-4ef"/>
+                            <constraint firstItem="c4V-IQ-dqb" firstAttribute="bottom" secondItem="68o-hH-Ykt" secondAttribute="bottom" id="Dsz-xT-csh"/>
+                            <constraint firstItem="c4V-IQ-dqb" firstAttribute="trailing" secondItem="68o-hH-Ykt" secondAttribute="trailing" id="k0o-nI-XVu"/>
+                            <constraint firstItem="68o-hH-Ykt" firstAttribute="top" secondItem="c4V-IQ-dqb" secondAttribute="top" id="zF1-mK-0tp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="productWebView" destination="68o-hH-Ykt" id="FxA-O1-ELz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XTA-zL-oCp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1724" y="-28"/>
         </scene>
     </scenes>
     <resources>

@@ -14,19 +14,26 @@ final class SearchResultViewController: BaseCollectionViewController, Navigatabl
   @IBOutlet weak var productCollectionView: UICollectionView!
   
   private var viewModel: SearchResultViewModel?
+  private var searchKeyword: String = ""
   
   private var products: [Product] = [] {
     didSet {
       productCollectionView.reloadData()
     }
   }
-  private var searchKeyword: String = ""
+  
   private var currentSortType: NaverAPIEndpoint.Sort = .sim {
     didSet {
       configure()
       viewModel?.apiContainer.resetPage()
       callRequest()
     }
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    productCollectionView.reloadData()
   }
   
   override func configure() {
@@ -36,9 +43,6 @@ final class SearchResultViewController: BaseCollectionViewController, Navigatabl
       button.tag = index
       DesignSystemManager.configureSortButton(button, isSelected: index == currentSortType.tag)
     }
-    
-    ///
-    User.default.likes = []
   }
   
   override func setAttribute() {
@@ -87,16 +91,7 @@ final class SearchResultViewController: BaseCollectionViewController, Navigatabl
   
   @objc private func likeButtonTapped(_ sender: UIButton) {
     let productID: String = products[sender.tag].productID
-    let isContain: Bool = User.default.likes.contains(productID)
-    
-    if isContain {
-      if let index = User.default.likes.firstIndex(of: productID) {
-        User.default.likes.remove(at: index)
-      }
-    } else {
-      User.default.likes.append(productID)
-    }
-    
+    User.default.toggleLike(productID: productID)
     productCollectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
   }
   
@@ -133,7 +128,9 @@ extension SearchResultViewController: CollectionConfigurable {
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let product: Product = products[indexPath.row]
     
+    viewModel?.showProductDetailViewController(product: product)
   }
   
   func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) { }

@@ -33,16 +33,6 @@ final class SearchViewController: BaseTableViewController, Navigatable, ViewMode
     DesignSystemManager.configureRecentSearchLabel(recentSearchLabel)
     
     hideViewBy(isKeywordEmpty: User.default.recentSearches.isEmpty)
-    
-    User.default.recentSearches = [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-    ]
-    
-    print(User.default.recentSearches)
   }
   
   override func setAttribute() {

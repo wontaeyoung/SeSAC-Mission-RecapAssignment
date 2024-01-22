@@ -10,9 +10,16 @@ import Foundation
 enum NaverAPIEndpoint: Endpoint {
   
   case shop(query: String, display: Int, start: Int, sort: Sort)
+  case shopDetail(productID: String)
   
   var path: String {
-    return "/v1/search/shop.json"
+    switch self {
+      case .shop:
+        return "/v1/search/shop.json"
+        
+      case .shopDetail(let productID):
+        return "/product/\(productID)"
+    }
   }
   
   var queryItems: [URLQueryItem] {
@@ -24,6 +31,9 @@ enum NaverAPIEndpoint: Endpoint {
           URLQueryItem(name: NaverAPIParameter.start.key, value: start.description),
           URLQueryItem(name: NaverAPIParameter.sort.key, value: sort.name)
         ]
+        
+      case .shopDetail:
+        return []
     }
   }
 }

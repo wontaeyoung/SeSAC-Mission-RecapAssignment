@@ -40,4 +40,16 @@ final class User {
     
     recentSearches.insert(keyword, at: 0)
   }
+  
+  func toggleLike(productID: String) {
+    let isContains: Bool = User.default.likes.contains(productID)
+    
+    if isContains {
+      if let index = likes.firstIndex(of: productID) {
+        likes.remove(at: index)
+      }
+    } else {
+      likes.append(productID)
+    }
+  }
 }

@@ -40,7 +40,6 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
   
   override func setAttribute() {
     navigationItem.title = "프로필 설정"
-    navigationItem.backButtonTitle = ""
     
     profileImageView.image = User.Profile.randomProfileImage
     profileImageView.addGestureRecognizer(

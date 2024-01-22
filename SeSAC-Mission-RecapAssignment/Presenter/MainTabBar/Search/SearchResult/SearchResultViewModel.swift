@@ -15,6 +15,10 @@ final class SearchResultViewModel: ViewModel {
   init(coordinator: SearchCoordinator) {
     self.coordinator = coordinator
   }
+  
+  func showProductDetailViewController(product: Product) {
+    coordinator?.showProductDetailViewController(product: product)
+  }
 }
 
 extension SearchResultViewModel {

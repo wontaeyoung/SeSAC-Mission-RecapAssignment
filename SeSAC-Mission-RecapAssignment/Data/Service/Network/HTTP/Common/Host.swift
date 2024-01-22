@@ -8,6 +8,7 @@
 enum Host: String {
   
   case naverOpenAPI = "openapi.naver.com"
+  case naverShopProductDetail = "msearch.shopping.naver.com"
   
   var domain: String {
     return self.rawValue
