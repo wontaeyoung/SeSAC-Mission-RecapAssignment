@@ -7,18 +7,15 @@
 
 import UIKit
 
-final class MainTabBarCoordinator: Coordinator {  
+final class MainTabBarCoordinator: Coordinator {
   
   // MARK: - Property
   weak var delegate: CoordinatorDelegate?
-  var navigationController: UINavigationController
   var tabBarController: UITabBarController
   var childCoordinators: [Coordinator]
   
-  // MARK: - Intializer
-  init(_ navigationController: UINavigationController) {
-    self.navigationController = navigationController
-    self.tabBarController = MainTabBarController()
+  init(tabBarController: UITabBarController) {
+    self.tabBarController = tabBarController
     self.childCoordinators = []
   }
   
@@ -32,8 +29,6 @@ final class MainTabBarCoordinator: Coordinator {
     }
     
     configureTabBarController(with: rootNavigationControllers)
-    self.navigationController.setNavigationBarHidden(true, animated: false)
-    self.push(tabBarController)
   }
   
   private func configureTabBarController(with controllers: [UINavigationController]) {
@@ -59,13 +54,13 @@ final class MainTabBarCoordinator: Coordinator {
       case .search:
         let searchCoordinator = SearchCoordinator(controller)
         searchCoordinator.start()
-        self.addChind(searchCoordinator)
+        self.addChild(searchCoordinator)
         
       case .setting:
         let settingCoordinator = SettingCoordinator(controller)
         settingCoordinator.delegate = self
         settingCoordinator.start()
-        self.addChind(settingCoordinator)
+        self.addChild(settingCoordinator)
     }
   }
 }
@@ -74,7 +69,6 @@ extension MainTabBarCoordinator: CoordinatorDelegate {
   
   @MainActor
   func coordinatorDidEnd(_ childCoordinator: Coordinator) {
-    self.popToRoot()
-    self.end()
+    delegate?.coordinatorDidEnd(self)
   }
 }

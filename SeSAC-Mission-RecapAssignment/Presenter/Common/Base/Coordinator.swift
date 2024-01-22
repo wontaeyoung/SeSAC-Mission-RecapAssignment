@@ -15,14 +15,18 @@ protocol CoordinatorDelegate: AnyObject {
 protocol Coordinator: AnyObject {
   // MARK: - Property
   var delegate: CoordinatorDelegate? { get set }
-  var navigationController: UINavigationController { get set }
   var childCoordinators: [Coordinator] { get set }
-  
-  // MARK: - Initializer
-  init(_ navigationController: UINavigationController)
   
   // MARK: - Method
   @MainActor func start()
+  
+}
+
+protocol SubCoordinator: Coordinator {
+  var navigationController: UINavigationController { get set }
+  
+  init(_ navigationController: UINavigationController)
+  
   @MainActor func end()
   @MainActor func push(_ viewController: UIViewController, animation: Bool)
   @MainActor func pop(animation: Bool)
@@ -39,7 +43,7 @@ protocol Coordinator: AnyObject {
 }
 
 // MARK: - View Navigation
-extension Coordinator {
+extension SubCoordinator {
   
   @MainActor
   func end() {
@@ -70,6 +74,7 @@ extension Coordinator {
   
   func emptyOut() {
     self.navigationController.viewControllers.removeAll()
+    self.childCoordinators.removeAll()
   }
   
   func handle(error: Error) {
@@ -113,7 +118,7 @@ extension Coordinator {
     return storyboard.instantiateViewController(withIdentifier: viewController.identifier)
   }
   
-  func addChind(_ childCoordinator: Coordinator) {
+  func addChild(_ childCoordinator: Coordinator) {
     self.childCoordinators.append(childCoordinator)
   }
 }

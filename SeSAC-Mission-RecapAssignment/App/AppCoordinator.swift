@@ -10,17 +10,14 @@ import UIKit
 final class AppCoordinator: Coordinator {
   
   weak var delegate: CoordinatorDelegate?
-  var navigationController: UINavigationController
-  var childCoordinators: [Coordinator]
+  weak var window: UIWindow?
+  var childCoordinators: [Coordinator] = []
   
-  init(_ navigationController: UINavigationController) {
-    self.navigationController = navigationController
-    self.childCoordinators = []
+  init(window: UIWindow?) {
+    self.window = window
   }
   
   func start() {
-    self.navigationController.navigationBar.barTintColor = .raBackground
-    
     if User.default.onboarded {
       connectMainTabBarFlow()
     } else {
@@ -33,20 +30,26 @@ extension AppCoordinator {
   
   @MainActor 
   private func connectOnboardingFlow() {
-    self.emptyOut()
-    let authCoordinator = AuthCoordinator(self.navigationController)
+    let rootNavigationController = UINavigationController()
+    let authCoordinator = AuthCoordinator(rootNavigationController)
     authCoordinator.delegate = self
     authCoordinator.start()
-    self.addChind(authCoordinator)
+    self.addChild(authCoordinator)
+    
+    window?.rootViewController = rootNavigationController
+    window?.makeKeyAndVisible()
   }
   
   @MainActor
   private func connectMainTabBarFlow() {
-    self.popToRoot()
-    let mainTabBarCoordinator = MainTabBarCoordinator(self.navigationController)
+    let rootTabBarController = MainTabBarController()
+    let mainTabBarCoordinator = MainTabBarCoordinator(tabBarController: rootTabBarController)
     mainTabBarCoordinator.delegate = self
     mainTabBarCoordinator.start()
-    self.addChind(mainTabBarCoordinator)
+    self.addChild(mainTabBarCoordinator)
+    
+    window?.rootViewController = rootTabBarController
+    window?.makeKeyAndVisible()
   }
 }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AuthCoordinator: Coordinator {
+final class AuthCoordinator: SubCoordinator {
   
   // MARK: - Property
   weak var delegate: CoordinatorDelegate?

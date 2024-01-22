@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SearchCoordinator: Coordinator {
+final class SearchCoordinator: SubCoordinator {
   
   // MARK: - Property
   weak var delegate: CoordinatorDelegate?

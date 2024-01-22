@@ -16,15 +16,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     window = UIWindow(windowScene: windowScene)
     
-    let rootNavigationController = UINavigationController()
-    self.coordinator = AppCoordinator(rootNavigationController)
-    
-    window?.rootViewController = rootNavigationController
-    window?.makeKeyAndVisible()
-    
-    rootNavigationController.navigationBar.tintColor = .raText
-    rootNavigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.raText]
-    
+    self.coordinator = AppCoordinator(window: window)
     self.coordinator?.start()
   }
   
