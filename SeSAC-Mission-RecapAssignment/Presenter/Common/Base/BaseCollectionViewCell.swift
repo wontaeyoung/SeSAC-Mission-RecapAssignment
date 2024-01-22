@@ -23,5 +23,6 @@ class BaseCollectionViewCell: UICollectionViewCell {
     self.contentView.backgroundColor = .clear
     
     configure()
+    setAttribute()
   }
 }
