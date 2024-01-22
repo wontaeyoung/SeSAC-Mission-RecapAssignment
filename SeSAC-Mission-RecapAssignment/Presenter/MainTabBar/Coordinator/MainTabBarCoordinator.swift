@@ -38,7 +38,7 @@ final class MainTabBarCoordinator: Coordinator {
   
   private func configureTabBarController(with controllers: [UINavigationController]) {
     tabBarController.configure {
-      $0.setViewControllers(controllers, animated: true)
+      $0.setViewControllers(controllers, animated: false)
       $0.selectedIndex = MainTabBarPage.search.index
     }
     

@@ -27,6 +27,7 @@ final class SettingViewController: BaseTableViewController, Navigatable, ViewMod
   }
   
   override func register() {
+    self.tableCellRegister(settingTableView, cellType: SettingProfileTableViewCell.self)
     self.setTableViewConfiguration(settingTableView)
   }
   
@@ -48,25 +49,7 @@ extension SettingViewController: TableConfigurable {
     let cell: UITableViewCell
     
     if indexPath.section == 0 {
-      cell = tableView.dequeueReusableCell(withIdentifier: SettingProfileCell.identifier, for: indexPath)
-      
-      if let imageView = cell.imageView {
-        DesignSystemManager.configureProfileImageView(imageView)
-        DesignSystemManager.configureSelectedImageView(imageView)
-        imageView.image = User.default.profile.image
-      }
-      
-      cell.textLabel?.configure {
-        $0.text = User.default.nickname
-        $0.textColor = .raText
-        $0.font = RADesign.Font.primaryButtonTitle.font
-      }
-      
-      cell.detailTextLabel?.configure {
-        $0.text = "\(User.default.likes.count)개의 상품을 좋아하고 있어요!"
-        $0.textColor = .raText
-        $0.font = RADesign.Font.captionBold.font
-      }
+      cell = tableView.dequeueReusableCell(withIdentifier: SettingProfileTableViewCell.identifier, for: indexPath)
       
     } else {
       cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath)
@@ -81,6 +64,6 @@ extension SettingViewController: TableConfigurable {
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return indexPath.section == 0 ? 120 : 60
+    return indexPath.section == 0 ? 100 : 60
   }
 }

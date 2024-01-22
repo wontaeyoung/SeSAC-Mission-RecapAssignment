@@ -90,12 +90,28 @@ final class DesignSystemManager {
     }
   }
   
+  static func configureNicknameLabel(_ label: UILabel) {
+    
+    label.configure {
+      $0.font = RADesign.Font.primaryTitle.font
+      $0.textColor = .raText
+    }
+  }
+  
+  static func configureLikeCountLabel(_ label: UILabel) {
+    
+    label.configure {
+      $0.font = RADesign.Font.captionBlack.font
+      $0.textColor = .raText
+    }
+  }
+  
   // MARK: - Button
   static func configurePrimaryButton(_ button: UIButton) {
     
     button.configure {
       $0.setTitleColor(.white, for: .normal)
-      $0.titleLabel!.font = RADesign.Font.primaryButtonTitle.font
+      $0.titleLabel!.font = RADesign.Font.primaryTitle.font
       $0.backgroundColor = .accent
       $0.clipsToBounds = true
       $0.layer.cornerRadius = 8
