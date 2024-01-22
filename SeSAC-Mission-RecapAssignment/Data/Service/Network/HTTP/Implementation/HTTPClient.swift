@@ -36,7 +36,7 @@ final class HTTPClient {
     session
       .request(url, method: method, headers: headers)
       .responseDecodable(of: T.self) { response in
-                
+        
         switch response.result {
             
           case .success(let data):
@@ -46,5 +46,37 @@ final class HTTPClient {
             completion(.failure(error))
         }
       }
+  }
+}
+
+// MARK: - Error Mapping
+extension HTTPClient {
+  
+  static func handleAFError(_ error: AFError) -> APIError {
+    switch error {
+      case .sessionTaskFailed(let sessionError):
+        return analyzeSessionTaskFailure(sessionError)
+        
+      default:
+        return .unknownError
+    }
+  }
+  
+  static func analyzeSessionTaskFailure(_ error: Error) -> APIError {
+    let nsError = error as NSError
+    
+    switch nsError.code {
+      case NSURLErrorTimedOut:
+        return .timedOut
+        
+      case NSURLErrorNetworkConnectionLost:
+        return .networkConnectionLost
+        
+      case NSURLErrorNotConnectedToInternet:
+        return .notConnectedToInternet
+        
+      default:
+        return .unknownError
+    }
   }
 }

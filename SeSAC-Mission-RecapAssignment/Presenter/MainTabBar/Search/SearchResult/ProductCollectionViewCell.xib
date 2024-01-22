@@ -51,8 +51,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e76-lk-N18">
-                        <rect key="frame" x="247" y="247" width="45" height="45"/>
+                        <rect key="frame" x="262" y="262" width="30" height="30"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="30" id="ED3-MW-Ecw"/>
                             <constraint firstAttribute="width" secondItem="e76-lk-N18" secondAttribute="height" id="Wwz-Ji-dh8"/>
                         </constraints>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -71,7 +72,6 @@
                 <constraint firstAttribute="trailing" secondItem="tNJ-n9-BVc" secondAttribute="trailing" constant="8" id="Zz8-vB-DPU"/>
                 <constraint firstItem="0CS-fZ-eVw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="adx-NX-mNe"/>
                 <constraint firstItem="0CS-fZ-eVw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bqD-Rj-tvT"/>
-                <constraint firstItem="e76-lk-N18" firstAttribute="width" secondItem="0CS-fZ-eVw" secondAttribute="width" multiplier="0.15" id="dzS-xp-5LP"/>
                 <constraint firstItem="SKp-qR-Y2E" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="ggg-ZO-jqT"/>
                 <constraint firstItem="tNJ-n9-BVc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="jIZ-rH-50x"/>
                 <constraint firstItem="e76-lk-N18" firstAttribute="bottom" secondItem="0CS-fZ-eVw" secondAttribute="bottom" constant="-8" id="nBV-j4-jsP"/>

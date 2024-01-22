@@ -133,7 +133,6 @@ final class DesignSystemManager {
   static func configureSelectedSortButton(_ button: UIButton, isSelected: Bool) {
     
     button.configure {
-      /// 한번 선택되었다가 디셀렉트 된 글자색 왜 안바뀌는지 확인해야됨
       $0.setTitleColor(isSelected ? .raBackground : .raText, for: .normal)
       $0.backgroundColor = isSelected ? .raText : .clear
       $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
@@ -144,7 +143,8 @@ final class DesignSystemManager {
     
     button.configure {
       $0.tintColor = .raBackground
-      $0.backgroundColor = .clear
+      $0.backgroundColor = .raText
+      configureCircleShapeView($0, width: 30)
     }
   }
   
@@ -152,7 +152,7 @@ final class DesignSystemManager {
   static func configureProfileImageView(_ imageView: UIImageView) {
     
     imageView.isUserInteractionEnabled = true
-    configureCircleShapeView(imageView)
+    configureCircleShapeView(imageView, width: imageView.frame.size.width)
   }
   
   static func configureSelectedImageView(_ imageView: UIImageView) {
@@ -173,11 +173,11 @@ final class DesignSystemManager {
   }
   
   // MARK: - UIView
-  static func configureCircleShapeView(_ view: UIView) {
+  static func configureCircleShapeView(_ view: UIView, width: CGFloat) {
     
     view.configure {
       $0.clipsToBounds = true
-      $0.layer.cornerRadius = view.frame.size.width / 2
+      $0.layer.cornerRadius = width / 2
     }
   }
   

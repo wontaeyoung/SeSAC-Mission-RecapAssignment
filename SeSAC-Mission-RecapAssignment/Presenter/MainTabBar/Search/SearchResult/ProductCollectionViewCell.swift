@@ -17,11 +17,15 @@ final class ProductCollectionViewCell: BaseCollectionViewCell {
   @IBOutlet weak var likeButton: UIButton!
   
   override func configure() {
-    DesignSystemManager.configureProductImageView(productImageView)
-    DesignSystemManager.configureMallNameLabel(mallNameLabel)
-    DesignSystemManager.configureProductTitleLabel(titleLabel)
-    DesignSystemManager.configureProductPriceLabel(priceLabel)
-    DesignSystemManager.configureLikeButton(likeButton)
+    DispatchQueue.main.async { [weak self] in
+      guard let self else { return }
+      
+      DesignSystemManager.configureProductImageView(productImageView)
+      DesignSystemManager.configureMallNameLabel(mallNameLabel)
+      DesignSystemManager.configureProductTitleLabel(titleLabel)
+      DesignSystemManager.configureProductPriceLabel(priceLabel)
+      DesignSystemManager.configureLikeButton(likeButton)
+    }
   }
   
   func setData(product: Product, tag: Int) {

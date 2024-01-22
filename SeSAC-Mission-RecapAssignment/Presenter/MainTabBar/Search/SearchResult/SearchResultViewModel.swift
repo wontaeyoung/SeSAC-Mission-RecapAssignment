@@ -80,10 +80,13 @@ extension SearchResultViewModel {
             completion((count: success.total, items: products))
             
           case .failure(let failure):
-            coordinator?.handle(error: failure)
+            let apiError: APIError = HTTPClient.handleAFError(failure)
+            
+            coordinator?.handle(error: apiError)
         }
       }
     } catch {
+      
       coordinator?.handle(error: error)
     }
   }
