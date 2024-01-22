@@ -14,7 +14,7 @@ extension UIAlertController {
   
   func setAction(
     title: String?,
-    style: UIAlertAction.Style = .default,
+    style: UIAlertAction.Style,
     completion: (() -> Void)? = nil
   ) -> UIAlertController {
     let alertAction = UIAlertAction(title: title, style: style) { _ in

@@ -47,6 +47,7 @@ extension AuthCoordinator {
     ) as! NicknameSettingViewController
     
     viewController.setViewModel(viewModel)
+    viewController.setNavigationTitle(with: "프로필 설정")
     self.push(viewController)
   }
   
@@ -58,6 +59,7 @@ extension AuthCoordinator {
     ) as! ProfileImageSettingViewController
     
     viewController.setViewModel(viewModel)
+    viewController.setNavigationTitle(with: "프로필 수정")
     self.push(viewController)
   }
 }

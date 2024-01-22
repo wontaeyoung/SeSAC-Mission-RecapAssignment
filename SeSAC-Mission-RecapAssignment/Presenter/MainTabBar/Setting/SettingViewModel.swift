@@ -15,4 +15,14 @@ final class SettingViewModel: ViewModel {
   func showSettingViewController() {
     coordinator?.showSettingViewController()
   }
+  
+  func showNicknameSettingViewController() {
+    coordinator?.showNicknameSettingViewController()
+  }
+  
+  @MainActor
+  func resetProfile() {
+    User.default.resetProfile()
+    coordinator?.end()
+  }
 }

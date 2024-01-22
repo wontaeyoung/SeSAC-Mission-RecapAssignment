@@ -39,23 +39,28 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
   }
   
   override func setAttribute() {
-    navigationItem.title = "프로필 설정"
-    
-    profileImageView.image = User.Profile.randomProfileImage
+    profileImageView.image = User.default.profile.image
     profileImageView.addGestureRecognizer(
       UITapGestureRecognizer(target: self, action: #selector(profileImageTapped))
     )
     
     nicknameField.placeholder = "닉네임을 입력해주세요 :)"
+    nicknameField.text = User.default.nickname
     nicknameField.addTarget(self, action: #selector(textfieldDidChanged), for: .editingChanged)
     
     finishButton.setTitle("완료", for: .normal)
     finishButton.addTarget(self, action: #selector(finishButtonTapped), for: .touchUpInside)
+    
     toggleFinishButton()
+    textfieldDidChanged(nicknameField)
   }
   
   func setViewModel(_ viewModel: NicknameSettingViewModel) {
     self.viewModel = viewModel
+  }
+  
+  func setNavigationTitle(with title: String) {
+    self.navigationItem.title = title
   }
   
   @objc private func profileImageTapped() {

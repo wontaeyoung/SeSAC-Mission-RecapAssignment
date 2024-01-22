@@ -55,6 +55,22 @@ extension SettingViewController: TableConfigurable {
     return cell
   }
   
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if indexPath.section == 0 {
+      
+      viewModel?.showNicknameSettingViewController()
+    } else if indexPath.row == settingItems.count - 1 {
+      
+      viewModel?.coordinator?.showAlert(
+        title: "처음부터 시작하기",
+        message: "데이터를 모두 초기화하시겠습니까?",
+        okStyle: .destructive
+      ) {
+        self.viewModel?.resetProfile()
+      }
+    }
+  }
+  
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return indexPath.section == 0 ? 100 : 40
   }

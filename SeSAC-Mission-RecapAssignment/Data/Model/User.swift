@@ -52,4 +52,12 @@ final class User {
       likes.append(productID)
     }
   }
+  
+  func resetProfile() {
+    nickname = ""
+    profile = .allCases.randomElement() ?? .profile1
+    likes.removeAll()
+    recentSearches.removeAll()
+    onboarded = false
+  }
 }

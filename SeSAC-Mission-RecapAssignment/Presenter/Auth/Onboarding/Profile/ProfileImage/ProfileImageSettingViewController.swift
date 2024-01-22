@@ -20,8 +20,6 @@ final class ProfileImageSettingViewController: BaseCollectionViewController, Nav
   }
   
   override func setAttribute() {
-    navigationItem.title = "프로필 설정"
-    
     currentProfileImageView.image = User.default.profile.image
   }
   
@@ -48,6 +46,10 @@ final class ProfileImageSettingViewController: BaseCollectionViewController, Nav
   
   func setViewModel(_ viewModel: ProfileImageSettingViewModel) {
     self.viewModel = viewModel
+  }
+  
+  func setNavigationTitle(with title: String) {
+    self.navigationItem.title = title
   }
 }
 

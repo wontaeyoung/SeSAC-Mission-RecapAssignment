@@ -138,8 +138,6 @@ extension SearchResultViewController: CollectionConfigurable {
   func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) { 
     guard let viewModel, !viewModel.apiContainer.isEnd else { return }
     
-    print("Prefetch \(indexPaths)")
-    
     indexPaths
       .forEach { path in
         if path.row + 1 == products.count {

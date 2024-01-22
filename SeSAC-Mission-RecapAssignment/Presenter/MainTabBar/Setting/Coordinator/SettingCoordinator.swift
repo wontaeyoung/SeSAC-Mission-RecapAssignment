@@ -47,4 +47,28 @@ extension SettingCoordinator {
     viewController.setViewModel(viewModel)
     self.push(viewController, animation: false)
   }
+  
+  func showNicknameSettingViewController() {
+    let coordinator = AuthCoordinator(self.navigationController)
+    self.addChild(coordinator)
+    
+    let viewModel = NicknameSettingViewModel(coordinator: coordinator)
+    let viewController = makeViewController(
+      storyboard: .ProfileSetting,
+      viewController: NicknameSettingViewController.self
+    ) as! NicknameSettingViewController
+    
+    coordinator.delegate = self
+    viewController.setViewModel(viewModel)
+    viewController.setNavigationTitle(with: "프로필 수정")
+    self.push(viewController)
+  }
+}
+
+extension SettingCoordinator: CoordinatorDelegate {
+  @MainActor
+  func coordinatorDidEnd(_ childCoordinator: Coordinator) {
+    self.end()
+    delegate?.coordinatorDidEnd(self)
+  }
 }
