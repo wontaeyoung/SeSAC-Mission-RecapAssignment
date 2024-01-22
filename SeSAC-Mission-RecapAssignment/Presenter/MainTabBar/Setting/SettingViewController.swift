@@ -14,16 +14,8 @@ final class SettingViewController: BaseTableViewController, Navigatable, ViewMod
   private var viewModel: SettingViewModel?
   private let settingItems: [String] = ["공지사항", "자주 묻는 질문", "1:1 문의", "알림 설정", "처음부터 시작하기"]
   
-  override func viewDidLayoutSubviews() {
-    
-  }
-  
-  override func configure() {
-    
-  }
-  
   override func setAttribute() {
-    
+    navigationItem.title = "설정"
   }
   
   override func register() {
@@ -64,6 +56,6 @@ extension SettingViewController: TableConfigurable {
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return indexPath.section == 0 ? 100 : 60
+    return indexPath.section == 0 ? 100 : 40
   }
 }
