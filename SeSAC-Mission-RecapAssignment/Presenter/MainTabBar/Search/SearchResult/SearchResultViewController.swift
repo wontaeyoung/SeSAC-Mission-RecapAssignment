@@ -9,25 +9,68 @@ import UIKit
 
 final class SearchResultViewController: BaseCollectionViewController, Navigatable, ViewModelController {
   
+  @IBOutlet weak var resultCountLabel: UILabel!
+  @IBOutlet var sortButtons: [UIButton]!
+  @IBOutlet weak var productCollectionView: UICollectionView!
+  
   private var viewModel: SearchResultViewModel?
-  private var products: [Product] = []
+  
+  private var products: [Product] = [] {
+    didSet {
+      productCollectionView.reloadData()
+    }
+  }
   private var searchKeyword: String = ""
   private var currentSortType: NaverAPIEndpoint.Sort = .sim {
     didSet {
-      
+      configure()
+      viewModel?.apiContainer.resetPage()
+      callRequest()
     }
   }
   
-  override func viewDidLayoutSubviews() {
-    
-  }
-  
   override func configure() {
+    DesignSystemManager.configureResultCountLabel(resultCountLabel)
     
+    sortButtons.enumerated().forEach { index, button in
+      button.tag = index
+      DesignSystemManager.configureSortButton(button, isSelected: index == currentSortType.tag)
+    }
+    
+    ///
+    User.default.likes = []
   }
   
   override func setAttribute() {
-    navigationItem.title = "캠핑카"
+    navigationItem.title = searchKeyword
+    
+    sortButtons.enumerated().forEach { index, button in
+      let title: String = NaverAPIEndpoint.Sort.allCases[index].title
+      button.setTitle(title, for: .normal)
+      button.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
+    }
+    
+    callRequest()
+  }
+  
+  override func register() {
+    self.collectionCellRegister(productCollectionView, cellType: ProductCollectionViewCell.self)
+    self.setCollectionViewConfiguration(productCollectionView)
+  }
+  
+  override func setLayout() {
+    let cellCount: Int = 2
+    let cellSpacing: CGFloat = 16
+    let cellWidth: CGFloat = (UIScreen.main.bounds.width - (cellSpacing * CGFloat(2 + cellCount - 1))) / CGFloat(cellCount)
+    
+    let layout = UICollectionViewFlowLayout().configured {
+      $0.itemSize = CGSize(width: cellWidth, height: cellWidth + 120)
+      $0.sectionInset = UIEdgeInsets(top: cellSpacing, left: cellSpacing, bottom: cellSpacing, right: cellSpacing)
+      $0.minimumLineSpacing = cellSpacing
+      $0.minimumInteritemSpacing = cellSpacing
+    }
+    
+    productCollectionView.collectionViewLayout = layout
   }
   
   func setViewModel(_ viewModel: SearchResultViewModel) {
@@ -37,4 +80,61 @@ final class SearchResultViewController: BaseCollectionViewController, Navigatabl
   func setData(keyword: String) {
     searchKeyword = keyword
   }
+  
+  @objc private func sortButtonTapped(_ sender: UIButton) {
+    currentSortType = .allCases[sender.tag]
+  }
+  
+  @objc private func likeButtonTapped(_ sender: UIButton) {
+    let productID: String = products[sender.tag].productID
+    let isContain: Bool = User.default.likes.contains(productID)
+    
+    if isContain {
+      if let index = User.default.likes.firstIndex(of: productID) {
+        User.default.likes.remove(at: index)
+      }
+    } else {
+      User.default.likes.append(productID)
+    }
+    
+    productCollectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
+  }
+  
+  private func callRequest() {
+    viewModel?.callRequest(query: searchKeyword, sort: currentSortType) { (count, products) in
+      DispatchQueue.main.async { [weak self] in
+        guard let self else { return }
+        
+        resultCountLabel.text = "\(count.formatted) 개의 검색 결과"
+        self.products = products
+      }
+    }
+  }
+}
+
+extension SearchResultViewController: CollectionConfigurable {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return products.count
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(
+      withReuseIdentifier: ProductCollectionViewCell.identifier,
+      for: indexPath
+    ) as! ProductCollectionViewCell
+    
+    let row: Int = indexPath.row
+    let product: Product = products[row]
+    
+    cell.setData(product: product, tag: row)
+    cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+    
+    return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) { }
 }

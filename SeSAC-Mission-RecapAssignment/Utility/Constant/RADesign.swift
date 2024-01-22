@@ -15,6 +15,7 @@ enum RADesign {
     case plain
     case plainBold
     case caption
+    case captionBold
     
     var font: UIFont {
       switch self {
@@ -32,6 +33,9 @@ enum RADesign {
           
         case .caption:
           return .systemFont(ofSize: 13)
+          
+        case .captionBold:
+          return .systemFont(ofSize: 13, weight: .bold)
       }
     }
   }
@@ -40,6 +44,8 @@ enum RADesign {
     case search
     case setting
     case delete
+    case like
+    case likeFill
     
     var image: UIImage? {
       switch self {
@@ -51,6 +57,12 @@ enum RADesign {
           
         case .delete:
           return UIImage(systemName: "xmark")
+          
+        case .like:
+          return UIImage(systemName: "heart")
+          
+        case .likeFill:
+          return UIImage(systemName: "heart.fill")
       }
     }
   }

@@ -55,6 +55,39 @@ final class DesignSystemManager {
     }
   }
   
+  static func configureResultCountLabel(_ label: UILabel) {
+    
+    label.configure {
+      $0.font = RADesign.Font.captionBold.font
+      $0.textColor = .accent
+    }
+  }
+  
+  static func configureMallNameLabel(_ label: UILabel) {
+    
+    label.configure {
+      $0.font = RADesign.Font.caption.font
+      $0.textColor = .gray
+    }
+  }
+  
+  static func configureProductTitleLabel(_ label: UILabel) {
+    
+    label.configure {
+      $0.font = RADesign.Font.caption.font
+      $0.textColor = .raText
+      $0.numberOfLines = 2
+    }
+  }
+  
+  static func configureProductPriceLabel(_ label: UILabel) {
+    
+    label.configure {
+      $0.font = RADesign.Font.plainBold.font
+      $0.textColor = .raText
+    }
+  }
+  
   // MARK: - Button
   static func configurePrimaryButton(_ button: UIButton) {
     
@@ -64,6 +97,34 @@ final class DesignSystemManager {
       $0.backgroundColor = .accent
       $0.clipsToBounds = true
       $0.layer.cornerRadius = 8
+    }
+  }
+  
+  static func configureSortButton(_ button: UIButton, isSelected: Bool) {
+    
+    button.configure {
+      $0.clipsToBounds = true
+      $0.layer.borderColor = UIColor.raText.cgColor
+      $0.layer.borderWidth = 1
+      $0.layer.cornerRadius = 5
+      
+      configureSelectedSortButton(button, isSelected: isSelected)
+    }
+  }
+  
+  static func configureSelectedSortButton(_ button: UIButton, isSelected: Bool) {
+    
+    button.configure {
+      $0.setTitleColor(isSelected ? .raBackground : .raText, for: .normal)
+      $0.backgroundColor = isSelected ? .raText : .clear
+    }
+  }
+  
+  static func configureLikeButton(_ button: UIButton) {
+    
+    button.configure {
+      $0.tintColor = .raBackground
+      $0.backgroundColor = .clear
     }
   }
   
@@ -79,6 +140,14 @@ final class DesignSystemManager {
     imageView.configure {
       $0.layer.borderColor = UIColor.accent.cgColor
       $0.layer.borderWidth = 4
+    }
+  }
+  
+  static func configureProductImageView(_ imageView: UIImageView) {
+    
+    imageView.configure {
+      $0.clipsToBounds = true
+      $0.layer.cornerRadius = 15
     }
   }
   
@@ -117,6 +186,7 @@ final class DesignSystemManager {
       $0.searchTextField.textColor = .raText
       $0.autocorrectionType = .no
       $0.autocapitalizationType = .none
+      $0.searchTextField.setPlaceholderColor(.systemGray)
     }
   }
 }
