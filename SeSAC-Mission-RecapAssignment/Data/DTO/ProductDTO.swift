@@ -18,8 +18,13 @@ struct ProductDTO: Codable, RADTO {
   let productID: String
   let title: String
   let mallName: String
-  let lprice: Int
+  let lprice: String
   let image: String
+  
+  enum CodingKeys: String, CodingKey {
+    case title, image, lprice, mallName
+    case productID = "productId"
+  }
   
   var asModel: Product {
     return Product(

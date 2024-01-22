@@ -10,6 +10,6 @@ struct Product: RAModel {
   let productID: String
   let title: String
   let mallName: String
-  let lprice: Int
+  let lprice: String
   let image: String
 }
