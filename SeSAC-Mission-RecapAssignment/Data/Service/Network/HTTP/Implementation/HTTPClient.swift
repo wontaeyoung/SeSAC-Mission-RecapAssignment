@@ -23,6 +23,7 @@ final class HTTPClient {
   
   func callRequest<T: Codable>(
     _ apiRequest: APIRequest,
+    modelType: T.Type,
     headers: HTTPHeaders,
     method: HTTPMethod,
     completion: @escaping (Result<T, AFError>) -> Void
@@ -35,7 +36,7 @@ final class HTTPClient {
     session
       .request(url, method: method, headers: headers)
       .responseDecodable(of: T.self) { response in
-        
+                
         switch response.result {
             
           case .success(let data):
