@@ -74,7 +74,6 @@
 		6E25C1EF2B5BEE5A00FCC927 /* ProfileSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E25C1EE2B5BEE5A00FCC927 /* ProfileSetting.storyboard */; };
 		6E25C1F12B5BEE7200FCC927 /* NicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25C1F02B5BEE7200FCC927 /* NicknameSettingViewController.swift */; };
 		6E25C1F32B5BEE7A00FCC927 /* NicknameSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25C1F22B5BEE7A00FCC927 /* NicknameSettingViewModel.swift */; };
-		6E25C1F52B5C053C00FCC927 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25C1F42B5C053C00FCC927 /* UITextField+.swift */; };
 		6E25C1F92B5C2A0200FCC927 /* ProfileImageSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25C1F82B5C2A0200FCC927 /* ProfileImageSettingViewController.swift */; };
 		6E25C1FB2B5C2A3300FCC927 /* ProfileImageSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25C1FA2B5C2A3300FCC927 /* ProfileImageSettingViewModel.swift */; };
 		6E25C1FE2B5C2CE100FCC927 /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25C1FC2B5C2CE100FCC927 /* ProfileImageCollectionViewCell.swift */; };
@@ -160,7 +159,6 @@
 		6E25C1EE2B5BEE5A00FCC927 /* ProfileSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileSetting.storyboard; sourceTree = "<group>"; };
 		6E25C1F02B5BEE7200FCC927 /* NicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewController.swift; sourceTree = "<group>"; };
 		6E25C1F22B5BEE7A00FCC927 /* NicknameSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewModel.swift; sourceTree = "<group>"; };
-		6E25C1F42B5C053C00FCC927 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		6E25C1F82B5C2A0200FCC927 /* ProfileImageSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingViewController.swift; sourceTree = "<group>"; };
 		6E25C1FA2B5C2A3300FCC927 /* ProfileImageSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingViewModel.swift; sourceTree = "<group>"; };
 		6E25C1FC2B5C2CE100FCC927 /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -504,7 +502,6 @@
 				6E25C1592B5905B600FCC927 /* UITableView+.swift */,
 				6E25C1612B5905B600FCC927 /* UIView+.swift */,
 				6E25C1DA2B5A58D200FCC927 /* UIAlertController+.swift */,
-				6E25C1F42B5C053C00FCC927 /* UITextField+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -738,7 +735,6 @@
 				6E25C1EA2B5AC11F00FCC927 /* ViewModel.swift in Sources */,
 				6E25C2142B5D045200FCC927 /* SettingCoordinator.swift in Sources */,
 				6E25C1F92B5C2A0200FCC927 /* ProfileImageSettingViewController.swift in Sources */,
-				6E25C1F52B5C053C00FCC927 /* UITextField+.swift in Sources */,
 				6E0368A12B5E20E0000C64D2 /* ProductDetailViewController.swift in Sources */,
 				6E0368962B5DFC67000C64D2 /* Int+.swift in Sources */,
 				6E25C1C92B5A3A0F00FCC927 /* BaseTableViewController.swift in Sources */,

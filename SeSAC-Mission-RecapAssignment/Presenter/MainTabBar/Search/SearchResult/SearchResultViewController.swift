@@ -25,9 +25,10 @@ final class SearchResultViewController: BaseCollectionViewController, Navigatabl
   private var currentSortType: NaverAPIEndpoint.Sort = .sim {
     didSet {
       guard oldValue != currentSortType else { return }
+      
       configure()
       viewModel?.apiContainer.resetPage()
-      self.products.removeAll()
+      resetProducts()
       callRequest()
     }
   }
@@ -49,6 +50,7 @@ final class SearchResultViewController: BaseCollectionViewController, Navigatabl
   
   override func setAttribute() {
     navigationItem.title = searchKeyword
+    navigationItem.backButtonTitle = ""
     
     sortButtons.enumerated().forEach { index, button in
       let title: String = NaverAPIEndpoint.Sort.allCases[index].title
@@ -95,6 +97,10 @@ final class SearchResultViewController: BaseCollectionViewController, Navigatabl
     let productID: String = products[sender.tag].productID
     User.default.toggleLike(productID: productID)
     productCollectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
+  }
+  
+  private func resetProducts() {
+    self.products.removeAll()
   }
   
   private func callRequest() {

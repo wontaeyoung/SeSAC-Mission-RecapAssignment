@@ -14,12 +14,18 @@ final class SettingViewController: BaseTableViewController, Navigatable, ViewMod
   private var viewModel: SettingViewModel?
   private let settingItems: [String] = ["공지사항", "자주 묻는 질문", "1:1 문의", "알림 설정", "처음부터 시작하기"]
   
+  override func viewWillAppear(_ animated: Bool) {
+    settingTableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+  }
+  
   override func setAttribute() {
     navigationItem.title = "설정"
+    navigationItem.backButtonTitle = ""
   }
   
   override func register() {
-    self.tableCellRegister(settingTableView, cellType: SettingProfileTableViewCell.self)
+    let xib = UINib(nibName: SettingProfileTableViewCell.identifier, bundle: nil)
+    settingTableView.register(xib, forCellReuseIdentifier: SettingProfileTableViewCell.identifier)
     self.setTableViewConfiguration(settingTableView)
   }
   
@@ -38,21 +44,23 @@ extension SettingViewController: TableConfigurable {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell: UITableViewCell
     
     if indexPath.section == 0 {
-      cell = tableView.dequeueReusableCell(withIdentifier: SettingProfileTableViewCell.identifier, for: indexPath)
+      let cell = tableView.dequeueReusableCell(withIdentifier: SettingProfileTableViewCell.identifier, for: indexPath) as! SettingProfileTableViewCell
+      cell.updateProfile()
+      
+      return cell
       
     } else {
-      cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath)
+      let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath)
       
       let row: Int = indexPath.row
-      print(settingItems[row])
       cell.textLabel?.text = settingItems[row]
       cell.textLabel?.textColor = .raText
+      cell.textLabel?.font = RADesign.Font.captionBlack.font
+      
+      return cell
     }
-    
-    return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -69,6 +77,8 @@ extension SettingViewController: TableConfigurable {
         self.viewModel?.resetProfile()
       }
     }
+    
+    tableView.reloadRows(at: [indexPath], with: .automatic)
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

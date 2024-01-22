@@ -37,6 +37,7 @@ final class SearchViewController: BaseTableViewController, Navigatable, ViewMode
   
   override func setAttribute() {
     navigationItem.title = User.default.nickname + "님의 새싹쇼핑"
+    navigationItem.backButtonTitle = ""
     searchBar.placeholder = "브랜드, 상품, 프로필, 태그 등"
     searchBar.delegate = self
     emptyImageView.image = .empty

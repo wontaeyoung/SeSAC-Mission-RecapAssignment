@@ -8,11 +8,8 @@
 import UIKit
 
 final class SettingTableViewCell: UITableViewCell {
+  
   static var identifier: String {
     return String(describing: Self.self)
-  }
-  
-  override func awakeFromNib() {
-    contentView.backgroundColor = .darkGray
   }
 }

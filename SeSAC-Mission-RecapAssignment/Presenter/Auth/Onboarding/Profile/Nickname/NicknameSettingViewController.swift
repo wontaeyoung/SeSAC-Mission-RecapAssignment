@@ -61,6 +61,7 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
   
   func setNavigationTitle(with title: String) {
     self.navigationItem.title = title
+    self.navigationItem.backButtonTitle = ""
   }
   
   @objc private func profileImageTapped() {
@@ -69,7 +70,12 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
   
   @objc private func finishButtonTapped(_ sender: UIButton) {
     applyNickname()
-    onboardingCompleted()
+    
+    if User.default.onboarded {
+      viewModel?.coordinator?.pop()
+    } else {
+      onboardingCompleted()
+    }
   }
   
   private func applyNickname() {
@@ -80,6 +86,10 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
     User.default.onboarded = true
     
     viewModel?.connectMainTabBarFlow()
+  }
+  
+  private func updateProfile() {
+    User.default.nickname = nicknameField.text!
   }
 }
 

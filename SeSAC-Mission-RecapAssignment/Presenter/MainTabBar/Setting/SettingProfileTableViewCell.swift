@@ -7,13 +7,17 @@
 
 import UIKit
 
-final class SettingProfileTableViewCell: BaseTableViewCell {
+final class SettingProfileTableViewCell: UITableViewCell {
+  
+  static var identifier: String {
+    return String(describing: Self.self)
+  }
   
   @IBOutlet weak var profileImageView: UIImageView!
   @IBOutlet weak var nicknameLabel: UILabel!
   @IBOutlet weak var likeCountInfoLabel: UILabel!
   
-  override func configure() {
+  override func awakeFromNib() {
     DispatchQueue.main.async { [weak self] in
       guard let self else { return }
       
@@ -24,9 +28,9 @@ final class SettingProfileTableViewCell: BaseTableViewCell {
     }
   }
   
-  override func setAttribute() {
-    self.profileImageView.image = User.default.profile.image
-    self.nicknameLabel.text = User.default.nickname
-    self.likeCountInfoLabel.text = "\(User.default.likes.count)개의 상품을 좋아하고 있어요!"
+  func updateProfile() {
+    profileImageView.image = User.default.profile.image
+    nicknameLabel.text = User.default.nickname
+    likeCountInfoLabel.text = "\(User.default.likes.count)개의 상품을 좋아하고 있어요!"
   }
 }

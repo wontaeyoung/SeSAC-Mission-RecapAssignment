@@ -10,7 +10,21 @@ import UIKit
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
   
+  private func setGlobalAppearence() {
+    let appearence = UINavigationBarAppearance().configured {
+      $0.backgroundColor = .raBackground
+      $0.titleTextAttributes = [.foregroundColor: UIColor.raText]
+      $0.largeTitleTextAttributes = [.foregroundColor: UIColor.raText]
+    }
+    
+    UINavigationBar.appearance().standardAppearance = appearence
+    UINavigationBar.appearance().compactAppearance = appearence
+    UINavigationBar.appearance().scrollEdgeAppearance = appearence
+  }
+  
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    setGlobalAppearence()
+    
     return true
   }
   
