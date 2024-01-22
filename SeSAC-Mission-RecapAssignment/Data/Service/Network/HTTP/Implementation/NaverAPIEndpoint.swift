@@ -38,6 +38,15 @@ extension NaverAPIEndpoint {
       return self.rawValue
     }
     
+    var tag: Int {
+      switch self {
+        case .sim: return 0
+        case .date: return 1
+        case .asc: return 2
+        case .dsc: return 3
+      }
+    }
+    
     var title: String {
       switch self {
         case .sim:
