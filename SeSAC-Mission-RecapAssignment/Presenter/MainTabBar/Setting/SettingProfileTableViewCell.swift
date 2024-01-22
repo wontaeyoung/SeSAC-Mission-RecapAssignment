@@ -25,12 +25,14 @@ final class SettingProfileTableViewCell: UITableViewCell {
       DesignSystemManager.configureSelectedImageView(profileImageView)
       DesignSystemManager.configureNicknameLabel(nicknameLabel)
       DesignSystemManager.configureLikeCountLabel(likeCountInfoLabel)
+      
+      updateProfile()
     }
   }
   
   func updateProfile() {
     profileImageView.image = User.default.profile.image
     nicknameLabel.text = User.default.nickname
-    likeCountInfoLabel.text = "\(User.default.likes.count)개의 상품을 좋아하고 있어요!"
+    likeCountInfoLabel.attributedText = "\(User.default.likes.count)개의 상품을 좋아하고 있어요!".colorAttributed(rangeText: "\(User.default.likes.count)개의 상품")
   }
 }

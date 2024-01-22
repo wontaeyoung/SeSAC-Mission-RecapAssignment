@@ -9,9 +9,9 @@ import UIKit
 
 class BaseCollectionViewController: BaseViewController {
   
-  /// Override해서 셀 등록 작업을 해주세요.
+  /// Override해서 셀 등록 작업
   @MainActor func register() { }
-  /// Override해서 CollectionViewFlowLayout을 설정해주세요.
+  /// Override해서 CollectionViewFlowLayout 설정
   @MainActor func setLayout() { }
   
   override func viewDidLoad() {

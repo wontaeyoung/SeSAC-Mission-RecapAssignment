@@ -7,8 +7,6 @@
 
 import UIKit
 
-/// 이미지 리사이징 계산할 때 터짐
-
 final class DesignSystemManager {
   
   // MARK: - Label

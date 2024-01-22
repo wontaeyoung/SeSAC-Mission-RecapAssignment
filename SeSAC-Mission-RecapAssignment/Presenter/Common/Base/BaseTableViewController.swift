@@ -9,7 +9,7 @@ import UIKit
 
 class BaseTableViewController: BaseViewController {
   
-  /// Override해서 셀 등록 작업을 해주세요.
+  /// Override해서 셀 등록 작업
   @MainActor func register() { }
   
   override func viewDidLoad() {

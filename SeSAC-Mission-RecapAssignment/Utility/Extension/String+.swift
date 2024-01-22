@@ -5,7 +5,7 @@
 //  Created by 원태영 on 1/19/24.
 //
 
-import Foundation
+import UIKit
 
 extension String {
   
@@ -24,5 +24,17 @@ extension String {
     ]
     
     return try? NSAttributedString(data: data, options: options, documentAttributes: nil)
+  }
+  
+  func colorAttributed(rangeText: String) -> NSAttributedString {
+    let attributedString = NSMutableAttributedString(string: self)
+    
+    attributedString.addAttribute(
+      .foregroundColor,
+      value: UIColor.accent,
+      range: (self as NSString).range(of: rangeText)
+    )
+    
+    return attributedString
   }
 }
