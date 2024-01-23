@@ -28,8 +28,6 @@ final class SearchViewController: BaseTableViewController, Navigatable, ViewMode
   }
   
   override func configure() {
-    self.finishableKeyboardEditing = true
-    
     DesignSystemManager.configureSearchBar(searchBar)
     DesignSystemManager.configureEmptyLabel(emptyLabel)
     DesignSystemManager.configureRecentSearchLabel(recentSearchLabel)
@@ -61,6 +59,8 @@ final class SearchViewController: BaseTableViewController, Navigatable, ViewMode
   private func hideViewBy(isKeywordEmpty: Bool) {
     searchKeywordView.forEach { $0.isHidden = isKeywordEmpty }
     emptyView.forEach { $0.isHidden = !isKeywordEmpty }
+    
+    self.finishableKeyboardEditing = isKeywordEmpty
   }
   
   private func bindRecentSearches() {
@@ -117,5 +117,6 @@ extension SearchViewController: UISearchBarDelegate {
     User.default.addNewSearchKeyword(keyword)
     viewModel?.showSearchResultViewController(keyword: keyword)
     bindRecentSearches()
+    view.endEditing(true)
   }
 }
