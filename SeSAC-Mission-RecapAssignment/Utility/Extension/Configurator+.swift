@@ -41,3 +41,4 @@ extension Set: Configurator { }
 
 extension URLComponents: Configurator { }
 extension UIEdgeInsets: Configurator { }
+extension DateComponents: Configurator { }
