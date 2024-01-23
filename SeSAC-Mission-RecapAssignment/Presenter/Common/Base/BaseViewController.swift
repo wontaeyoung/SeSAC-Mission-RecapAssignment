@@ -9,6 +9,7 @@ import UIKit
 
 class BaseViewController: UIViewController {
   
+  var finishableKeyboardEditing: Bool = false
   @MainActor func configure() { }
   @MainActor func setAttribute() { }
   
@@ -19,5 +20,17 @@ class BaseViewController: UIViewController {
     
     configure()
     setAttribute()
+    
+    if finishableKeyboardEditing { makeViewFinishableEditing() }
+  }
+  
+  private func makeViewFinishableEditing() {
+    let gesture = UITapGestureRecognizer(target: self, action: #selector(viewDidTap))
+    
+    view.addGestureRecognizer(gesture)
+  }
+  
+  @objc private func viewDidTap() {
+    view.endEditing(true)
   }
 }

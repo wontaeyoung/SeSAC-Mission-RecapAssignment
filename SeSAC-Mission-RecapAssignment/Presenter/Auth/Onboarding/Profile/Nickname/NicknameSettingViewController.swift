@@ -32,7 +32,10 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
     DesignSystemManager.configureSelectedImageView(profileImageView)
   }
   
+  @MainActor
   override func configure() {
+    self.finishableKeyboardEditing = true
+    
     DesignSystemManager.configureNicknameFeild(nicknameField)
     DesignSystemManager.configureHintLabel(hintLabel)
     DesignSystemManager.configurePrimaryButton(finishButton)

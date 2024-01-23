@@ -73,7 +73,6 @@ extension SettingViewController: TableConfigurable {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if indexPath.section == 0 {
-      
       viewModel?.showNicknameSettingViewController()
     } else if indexPath.row == settingItems.count - 1 {
       

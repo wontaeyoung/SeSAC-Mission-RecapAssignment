@@ -28,6 +28,8 @@ final class SearchViewController: BaseTableViewController, Navigatable, ViewMode
   }
   
   override func configure() {
+    self.finishableKeyboardEditing = true
+    
     DesignSystemManager.configureSearchBar(searchBar)
     DesignSystemManager.configureEmptyLabel(emptyLabel)
     DesignSystemManager.configureRecentSearchLabel(recentSearchLabel)
