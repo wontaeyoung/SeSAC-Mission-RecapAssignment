@@ -68,9 +68,13 @@ final class SearchViewController: BaseTableViewController, Navigatable, ViewMode
   }
   
   @objc private func deleteAllButtonTapped() {
-    User.default.recentSearches.removeAll()
-    bindRecentSearches()
-    hideViewBy(isKeywordEmpty: User.default.recentSearches.isEmpty)
+    viewModel?.showDeleteAllAlert { [weak self] in
+      guard let self else { return }
+      
+      User.default.recentSearches.removeAll()
+      bindRecentSearches()
+      hideViewBy(isKeywordEmpty: User.default.recentSearches.isEmpty)
+    }
   }
 }
 

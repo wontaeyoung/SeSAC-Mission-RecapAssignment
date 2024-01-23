@@ -15,4 +15,8 @@ final class SearchViewModel: ViewModel {
   func showSearchResultViewController(keyword: String) {
     coordinator?.showSearchResultViewController(keyword: keyword)
   }
+  
+  func showDeleteAllAlert(completion: @escaping () -> Void) {
+    coordinator?.showDeleteAllAlert(completion: completion)
+  }
 }

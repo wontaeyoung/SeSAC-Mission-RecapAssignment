@@ -44,6 +44,16 @@ final class SearchCoordinator: SubCoordinator {
 
 extension SearchCoordinator {
   
+  func showDeleteAllAlert(completion: @escaping () -> Void) {
+    self.showAlert(
+      title: "최근 검색어 삭제",
+      message: "최근 검색어를 모두 삭제할까요?", 
+      okTitle: "삭제",
+      okStyle: .destructive,
+      completion: completion
+    )
+  }
+  
   func showSearchViewController() {
     let viewModel = SearchViewModel(coordinator: self)
     let viewController = makeViewController(
