@@ -39,6 +39,7 @@ protocol SubCoordinator: Coordinator {
     message: String,
     okTitle: String?,
     okStyle: UIAlertAction.Style,
+    isCancelable: Bool,
     completion: (() -> Void)?
   )
 }
@@ -92,11 +93,15 @@ extension SubCoordinator {
     message: String,
     okTitle: String? = nil,
     okStyle: UIAlertAction.Style = .default,
+    isCancelable: Bool = true,
     completion: (() -> Void)? = nil
   ) {
-    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    var alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
       .setAction(title: okTitle ?? "확인", style: okStyle, completion: completion)
-      .setCancelAction()
+      
+    if isCancelable {
+      alertController = alertController.setCancelAction()
+    }
     
     self.present(alertController)
   }

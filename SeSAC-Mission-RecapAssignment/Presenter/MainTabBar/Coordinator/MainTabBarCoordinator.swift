@@ -43,6 +43,7 @@ final class MainTabBarCoordinator: Coordinator {
   @MainActor
   private func makeNavigationController(with page: MainTabBarPage) -> UINavigationController {
     return UINavigationController().configured {
+      $0.delegate = UserNotificationManager.shared
       $0.tabBarItem = page.tabBarItem
       connectTabFlow(page: page, controller: $0)
     }

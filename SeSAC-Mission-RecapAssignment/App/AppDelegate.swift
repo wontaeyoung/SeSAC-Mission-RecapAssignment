@@ -9,7 +9,6 @@ import UIKit
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-  
   private func setGlobalAppearence() {
     let appearence = UINavigationBarAppearance().configured {
       $0.backgroundColor = .raBackground
@@ -24,6 +23,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     setGlobalAppearence()
+    
+    UserNotificationManager.shared.requestAuth { isSuccess, error in
+      print(#function, "알림 권한 허용 여부 :", isSuccess)
+    }
     
     return true
   }

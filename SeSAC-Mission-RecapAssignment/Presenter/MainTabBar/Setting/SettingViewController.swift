@@ -32,6 +32,14 @@ final class SettingViewController: BaseTableViewController, Navigatable, ViewMod
   func setViewModel(_ viewModel: SettingViewModel) {
     self.viewModel = viewModel
   }
+  
+  func presentLikesCountInfoAlert() {
+    viewModel?.coordinator?.showAlert(
+      title: "좋아요 갯수 안내",
+      message: "현재 관심 상품 갯수는 \(User.default.likes.count) 입니다.",
+      isCancelable: false
+    )
+  }
 }
 
 extension SettingViewController: TableConfigurable {

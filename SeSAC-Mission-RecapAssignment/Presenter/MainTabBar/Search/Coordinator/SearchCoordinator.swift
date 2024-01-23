@@ -22,6 +22,13 @@ final class SearchCoordinator: SubCoordinator {
   
   // MARK: - Method
   func start() {
+    UserNotificationManager.shared.registerUserNotification(
+      id: Constant.Notification.Identifier.likeMoreProduct,
+      title: "좋아요 격려 알림",
+      body: "좋아요를 추가로 눌러보세요!",
+      trigger: .time(interval: 60, repeats: true)
+    )
+    
     configureNavigationBar()
     showSearchViewController()
   }

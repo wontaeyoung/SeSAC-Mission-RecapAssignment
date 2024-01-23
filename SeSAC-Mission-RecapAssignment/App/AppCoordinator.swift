@@ -32,6 +32,7 @@ extension AppCoordinator {
   private func connectOnboardingFlow() {
     let rootNavigationController = UINavigationController()
     let authCoordinator = AuthCoordinator(rootNavigationController)
+    rootNavigationController.delegate = UserNotificationManager.shared
     authCoordinator.delegate = self
     authCoordinator.start()
     self.addChild(authCoordinator)
