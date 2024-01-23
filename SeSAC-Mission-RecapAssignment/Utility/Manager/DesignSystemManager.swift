@@ -185,10 +185,11 @@ final class DesignSystemManager {
     textField.configure {
       let underline = CALayer().configured { layer in
         layer.backgroundColor = UIColor.raText.cgColor
-        layer.frame = CGRect(x: 0, y: textField.frame.size.height - 1, width: textField.frame.size.width, height: 1)
+        layer.frame = CGRect(x: 0, y: textField.frame.size.height - 10, width: textField.frame.size.width, height: 1)
       }
       
       $0.layer.addSublayer(underline)
+      $0.borderStyle = .none
       $0.textColor = .raText
       $0.backgroundColor = .clear
       $0.autocorrectionType = .no
