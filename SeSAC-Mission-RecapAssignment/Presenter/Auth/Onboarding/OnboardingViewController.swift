@@ -25,6 +25,7 @@ final class OnboardingViewController: BaseViewController, Navigatable, ViewModel
   }
   
   override func setAttribute() {
+    navigationItem.backButtonTitle = ""
     titleLabel.text = .combineWithLineBreaks("SeSAC", "Shopping")
     imageView.image = .onboarding
     startButton.setTitle("시작하기", for: .normal)
