@@ -23,6 +23,7 @@ final class SearchViewController: BaseTableViewController, Navigatable, ViewMode
   private var viewModel: SearchViewModel?
   private var recentSearches: [String] = User.default.recentSearches {
     didSet {
+      hideViewBy(isKeywordEmpty: recentSearches.isEmpty)
       recentSearchTableView.reloadData()
     }
   }
@@ -73,7 +74,6 @@ final class SearchViewController: BaseTableViewController, Navigatable, ViewMode
       
       User.default.recentSearches.removeAll()
       bindRecentSearches()
-      hideViewBy(isKeywordEmpty: User.default.recentSearches.isEmpty)
     }
   }
 }
@@ -111,6 +111,14 @@ extension SearchViewController: TableConfigurable {
 extension SearchViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     searchNewKeyword(searchBar.text!)
+  }
+  
+  func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    if range.location == .zero, text == " " {
+      return false
+    }
+    
+    return true
   }
   
   private func searchNewKeyword(_ keyword: String) {

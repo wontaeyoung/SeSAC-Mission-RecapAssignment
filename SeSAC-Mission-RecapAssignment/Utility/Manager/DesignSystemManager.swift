@@ -194,6 +194,7 @@ final class DesignSystemManager {
       $0.backgroundColor = .clear
       $0.autocorrectionType = .no
       $0.autocapitalizationType = .none
+      $0.spellCheckingType = .no
     }
   }
   
@@ -206,6 +207,7 @@ final class DesignSystemManager {
       $0.searchTextField.textColor = .raText
       $0.autocorrectionType = .no
       $0.autocapitalizationType = .none
+      $0.spellCheckingType = .no
     }
   }
 }
