@@ -11,6 +11,7 @@ import WebKit
 final class ProductDetailViewController: BaseViewController, Navigatable {
   
   @IBOutlet weak var productWebView: WKWebView!
+  @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
   
   var product: Product?
   
@@ -33,12 +34,19 @@ final class ProductDetailViewController: BaseViewController, Navigatable {
       target: self,
       action: #selector(likeButtonTapped)
     )
+    
+    loadingIndicator.configure {
+      $0.style = .large
+      $0.center = self.view.center
+      $0.hidesWhenStopped = true
+    }
   }
   
   override func setAttribute() {
     guard let product else { return }
     
     navigationItem.title = product.title.asMarkdownRedneredAttributeString?.string
+    productWebView.navigationDelegate = self
     productWebView.load(urlRequest)
   }
   
@@ -64,3 +72,26 @@ final class ProductDetailViewController: BaseViewController, Navigatable {
   }
 }
 
+// MARK: - Loading Indicator
+extension ProductDetailViewController {
+  func startLoading() {
+    loadingIndicator.startAnimating()
+  }
+  
+  func stopLoading() {
+    loadingIndicator.stopAnimating()
+  }
+}
+
+// MARK: - WebView Delegate
+extension ProductDetailViewController: WKNavigationDelegate {
+  // 로드 시작 시
+  func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+    startLoading()
+  }
+  
+  // 로드 완료 시
+  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    stopLoading()
+  }
+}

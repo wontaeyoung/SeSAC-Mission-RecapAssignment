@@ -207,6 +207,10 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="9OQ-SK-78m">
+                                <rect key="frame" x="177" y="333" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="c4V-IQ-dqb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -218,6 +222,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loadingIndicator" destination="9OQ-SK-78m" id="Pp2-34-3bW"/>
                         <outlet property="productWebView" destination="68o-hH-Ykt" id="FxA-O1-ELz"/>
                     </connections>
                 </viewController>
