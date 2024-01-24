@@ -153,6 +153,10 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="KyM-Cn-RYo">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RXk-EV-bcI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -174,6 +178,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loadingIndicator" destination="KyM-Cn-RYo" id="3hO-dq-ULo"/>
                         <outlet property="productCollectionView" destination="mBx-YK-WU7" id="BiK-WC-c6h"/>
                         <outlet property="resultCountLabel" destination="SYf-QZ-dv9" id="rZu-nE-Ddj"/>
                         <outletCollection property="sortButtons" destination="HZH-DI-FZF" collectionClass="NSMutableArray" id="fEC-tp-gi9"/>

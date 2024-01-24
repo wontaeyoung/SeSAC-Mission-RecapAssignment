@@ -12,12 +12,14 @@ final class SearchResultViewController: BaseCollectionViewController, Navigatabl
   @IBOutlet weak var resultCountLabel: UILabel!
   @IBOutlet var sortButtons: [UIButton]!
   @IBOutlet weak var productCollectionView: UICollectionView!
+  @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
   
   private var viewModel: SearchResultViewModel?
   private var searchKeyword: String = ""
   
   private var products: [Product] = [] {
     didSet {
+      stopLoading()
       productCollectionView.reloadData()
     }
   }
@@ -30,6 +32,7 @@ final class SearchResultViewController: BaseCollectionViewController, Navigatabl
       viewModel?.apiContainer.resetPage()
       resetProducts()
       callRequest()
+      startLoading()
     }
   }
   
@@ -40,6 +43,13 @@ final class SearchResultViewController: BaseCollectionViewController, Navigatabl
   }
   
   override func configure() {
+    loadingIndicator.configure {
+      $0.style = .large
+      $0.center = self.view.center
+      $0.hidesWhenStopped = true
+      $0.startAnimating()
+    }
+    
     DesignSystemManager.configureResultCountLabel(resultCountLabel)
     
     sortButtons.enumerated().forEach { index, button in
@@ -115,6 +125,18 @@ final class SearchResultViewController: BaseCollectionViewController, Navigatabl
   }
 }
 
+// MARK: - Loading Indicator
+extension SearchResultViewController {
+  func startLoading() {
+    loadingIndicator.startAnimating()
+  }
+  
+  func stopLoading() {
+    loadingIndicator.stopAnimating()
+  }
+}
+
+// MARK: - Collection View Delegate
 extension SearchResultViewController: CollectionConfigurable {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return products.count
