@@ -43,7 +43,11 @@ final class UserNotificationManager: NSObject {
       trigger: trigger.trigger
     )
     
-    notiCenter.add(request)
+    /// ON
+//    notiCenter.add(request)
+    
+    /// OFF
+    notiCenter.removeAllPendingNotificationRequests()
   }
 }
 
