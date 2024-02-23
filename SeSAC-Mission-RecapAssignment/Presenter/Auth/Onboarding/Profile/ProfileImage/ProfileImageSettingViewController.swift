@@ -12,15 +12,20 @@ final class ProfileImageSettingViewController: BaseCollectionViewController, Nav
   @IBOutlet weak var currentProfileImageView: UIImageView!
   @IBOutlet weak var profileImageCollectionView: UICollectionView!
   
-  private var viewModel: ProfileImageSettingViewModel?
+  private var viewModel: ProfileImageSettingViewModel!
   
   override func viewDidLayoutSubviews() {
     DesignSystemManager.configureProfileImageView(currentProfileImageView)
     DesignSystemManager.configureSelectedImageView(currentProfileImageView)
   }
   
-  override func setAttribute() {
-    currentProfileImageView.image = User.default.profile.image
+  override func bind() {
+    viewModel.currentProfile.bind { [weak self] in
+      guard let self else { return }
+      
+      currentProfileImageView.image = $0.image
+      profileImageCollectionView.reloadData()
+    }
   }
   
   override func register() {
@@ -54,21 +59,22 @@ final class ProfileImageSettingViewController: BaseCollectionViewController, Nav
 }
 
 extension ProfileImageSettingViewController: CollectionConfigurable {
+  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    User.Profile.allCases.count
+    return viewModel.collectionCount
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
-    let profile: User.Profile = .allCases[indexPath.row]
     let cell = collectionView.dequeueReusableCell(
       withReuseIdentifier: ProfileImageCollectionViewCell.identifier,
       for: indexPath
     ) as! ProfileImageCollectionViewCell
     
+    let profile = viewModel.profile(at: indexPath)
     cell.profileImageView.image = profile.image
     
-    if User.default.profile == profile {
+    if viewModel.isCurrentProfile(at: indexPath) {
       DesignSystemManager.configureSelectedImageView(cell.profileImageView)
     }
     
@@ -76,13 +82,7 @@ extension ProfileImageSettingViewController: CollectionConfigurable {
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    updateProfileImage(with: .allCases[indexPath.row])
-  }
-  
-  private func updateProfileImage(with profile: User.Profile) {
-    User.default.profile = profile
-    currentProfileImageView.image = User.default.profile.image
-    profileImageCollectionView.reloadData()
+    viewModel.updateProfileImage(at: indexPath)
   }
   
   func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) { }
