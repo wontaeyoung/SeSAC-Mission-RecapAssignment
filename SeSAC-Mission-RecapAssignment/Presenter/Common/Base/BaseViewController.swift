@@ -12,6 +12,7 @@ class BaseViewController: UIViewController {
   var finishableKeyboardEditing: Bool = false
   @MainActor func configure() { }
   @MainActor func setAttribute() { }
+  func bind() { }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -20,6 +21,7 @@ class BaseViewController: UIViewController {
     
     configure()
     setAttribute()
+    bind()
     
     if finishableKeyboardEditing { makeViewFinishableEditing() }
   }
