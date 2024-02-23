@@ -15,11 +15,6 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
   @IBOutlet weak var finishButton: UIButton!
   
   private var viewModel: NicknameSettingViewModel?
-  private var isFinishButtonEnable: Bool = false {
-    didSet {
-      toggleFinishButton()
-    }
-  }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -54,7 +49,6 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
     finishButton.setTitle("완료", for: .normal)
     finishButton.addTarget(self, action: #selector(finishButtonTapped), for: .touchUpInside)
     
-    toggleFinishButton()
     textfieldDidChanged(nicknameField)
   }
   
@@ -65,7 +59,7 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
     
     viewModel?.outputValidation.bind {
       self.changeHintColor(isValid: $0)
-      self.changeFinishButtonEnabled(isValid: $0)
+      self.toggleFinishButton(enabled: $0)
     }
   }
   
@@ -101,12 +95,8 @@ extension NicknameSettingViewController {
     hintLabel.textColor = isValid ? .accent : .red
   }
   
-  private func changeFinishButtonEnabled(isValid: Bool) {
-    isFinishButtonEnable = isValid
-  }
-  
-  private func toggleFinishButton() {
-    finishButton.isEnabled = isFinishButtonEnable
-    finishButton.backgroundColor = isFinishButtonEnable ? .accent : .gray
+  private func toggleFinishButton(enabled: Bool) {
+    finishButton.isEnabled = enabled
+    finishButton.backgroundColor = enabled ? .accent : .gray
   }
 }
