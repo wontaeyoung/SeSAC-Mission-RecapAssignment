@@ -90,6 +90,7 @@
 		6E25C2182B5D049900FCC927 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25C2172B5D049900FCC927 /* SettingViewController.swift */; };
 		6E25C21A2B5D108200FCC927 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E25C2192B5D108200FCC927 /* BaseTabBarController.swift */; };
 		6E9F59A82B5FA77600A3869F /* UserNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9F59A72B5FA77600A3869F /* UserNotificationManager.swift */; };
+		6ED751CA2B88B2C1004568E1 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED751C92B88B2C1004568E1 /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -176,6 +177,7 @@
 		6E25C2172B5D049900FCC927 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		6E25C2192B5D108200FCC927 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		6E9F59A72B5FA77600A3869F /* UserNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationManager.swift; sourceTree = "<group>"; };
+		6ED751C92B88B2C1004568E1 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -419,6 +421,7 @@
 				6E25C1AF2B59744700FCC927 /* JsonCoder.swift */,
 				6E25C1B22B59F5DB00FCC927 /* DesignSystemManager.swift */,
 				6E9F59A72B5FA77600A3869F /* UserNotificationManager.swift */,
+				6ED751C92B88B2C1004568E1 /* Observable.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -735,6 +738,7 @@
 				6E25C1E82B5AC0DD00FCC927 /* AuthCoordinator.swift in Sources */,
 				6E25C1942B59314600FCC927 /* Endpoint.swift in Sources */,
 				6E25C1CC2B5A3B5700FCC927 /* Configurable.swift in Sources */,
+				6ED751CA2B88B2C1004568E1 /* Observable.swift in Sources */,
 				6E25C1EA2B5AC11F00FCC927 /* ViewModel.swift in Sources */,
 				6E25C2142B5D045200FCC927 /* SettingCoordinator.swift in Sources */,
 				6E25C1F92B5C2A0200FCC927 /* ProfileImageSettingViewController.swift in Sources */,

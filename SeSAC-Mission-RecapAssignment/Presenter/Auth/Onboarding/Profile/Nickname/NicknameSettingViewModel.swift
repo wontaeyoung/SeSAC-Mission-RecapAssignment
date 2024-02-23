@@ -8,6 +8,17 @@
 final class NicknameSettingViewModel: ViewModel {
   weak var coordinator: AuthCoordinator?
   
+  lazy var inputNickname: Observable<String> = Observable("").binded { [weak self] newNickname in
+    guard let self else { return }
+    
+    let validation = validateNickname(newNickname)
+    outputHintText.set(validation.hintText)
+    outputValidation.set(validation == .satisfied)
+  }
+  
+  var outputHintText: Observable<String> = Observable("")
+  var outputValidation: Observable<Bool> = Observable(false)
+  
   init(coordinator: AuthCoordinator) {
     self.coordinator = coordinator
   }
@@ -19,6 +30,30 @@ final class NicknameSettingViewModel: ViewModel {
   @MainActor
   func connectMainTabBarFlow() {
     coordinator?.end()
+  }
+  
+  func applyNickname(_ text: String) {
+    User.default.nickname = text
+  }
+  
+  @MainActor
+  func switchView() {
+    if User.default.onboarded {
+      coordinator?.pop()
+    } else {
+      onboardingCompleted()
+    }
+  }
+  
+  @MainActor
+  private func onboardingCompleted() {
+    User.default.onboarded = true
+    
+    connectMainTabBarFlow()
+  }
+  
+  func updateProfile(_ text: String) {
+    User.default.nickname = text
   }
 }
 

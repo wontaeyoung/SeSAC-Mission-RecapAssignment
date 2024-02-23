@@ -58,6 +58,17 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
     textfieldDidChanged(nicknameField)
   }
   
+  override func bind() {
+    viewModel?.outputHintText.bind {
+      self.updateHintText($0)
+    }
+    
+    viewModel?.outputValidation.bind {
+      self.changeHintColor(isValid: $0)
+      self.changeFinishButtonEnabled(isValid: $0)
+    }
+  }
+  
   func setViewModel(_ viewModel: NicknameSettingViewModel) {
     self.viewModel = viewModel
   }
@@ -72,38 +83,14 @@ final class NicknameSettingViewController: BaseViewController, Navigatable, View
   }
   
   @objc private func finishButtonTapped(_ sender: UIButton) {
-    applyNickname()
-    
-    if User.default.onboarded {
-      viewModel?.coordinator?.pop()
-    } else {
-      onboardingCompleted()
-    }
-  }
-  
-  private func applyNickname() {
-    User.default.nickname = nicknameField.text!
-  }
-  
-  private func onboardingCompleted() {
-    User.default.onboarded = true
-    
-    viewModel?.connectMainTabBarFlow()
-  }
-  
-  private func updateProfile() {
-    User.default.nickname = nicknameField.text!
+    viewModel?.applyNickname(nicknameField.text!)
+    viewModel?.switchView()
   }
 }
 
-// MARK: - 닉네임 유효성
 extension NicknameSettingViewController {
   @objc private func textfieldDidChanged(_ sender: UITextField) {
-    let validation = viewModel?.validateNickname(sender.text!)
-    
-    updateHintText(validation?.hintText)
-    changeHintColor(isValid: validation == .satisfied)
-    changeFinishButtonEnabled(isValid: validation == .satisfied)
+    viewModel?.inputNickname.set(sender.text!)
   }
   
   private func updateHintText(_ text: String?) {
